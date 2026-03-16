@@ -109,7 +109,7 @@ function CommentCard({
   votedIds: Set<string>;
 }) {
   const [showReplyForm, setShowReplyForm] = useState(false);
-  const hasVoted = votedIds.has(comment.id);
+  const hasVoted = votedIds.includes(comment.id);
   const savedName = typeof window !== "undefined"
     ? localStorage.getItem("pe-comment-name") || ""
     : "";
@@ -212,9 +212,9 @@ function CommentCard({
                   <div className="flex flex-col items-center pt-1">
                     <button
                       onClick={() => onUpvote(reply.id)}
-                      disabled={votedIds.has(reply.id)}
+                      disabled={votedIds.includes(reply.id)}
                       className={`w-6 h-6 flex items-center justify-center rounded transition-colors ${
-                        votedIds.has(reply.id)
+                        votedIds.includes(reply.id)
                           ? "text-primary bg-pull-bg"
                           : "text-gray-400 hover:text-primary hover:bg-pull-bg"
                       }`}
@@ -233,7 +233,7 @@ function CommentCard({
                     </button>
                     <span
                       className={`font-sans text-[10px] font-semibold ${
-                        votedIds.has(reply.id) ? "text-primary" : "text-muted"
+                        votedIds.includes(reply.id) ? "text-primary" : "text-muted"
                       }`}
                     >
                       {reply.upvotes}
@@ -265,7 +265,7 @@ function CommentCard({
 export default function CommentSection() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [sortMode, setSortMode] = useState<SortMode>("hot");
-  const [votedIds, setVotedIds] = useState<Set<string>>(new Set());
+  const [votedIds, setVotedIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchComments = useCallback(async () => {
@@ -286,7 +286,7 @@ export default function CommentSection() {
     const saved = localStorage.getItem("pe-voted-ids");
     if (saved) {
       try {
-        setVotedIds(new Set(JSON.parse(saved)));
+        setVotedIds(JSON.parse(saved));
       } catch {
         // ignore
       }
@@ -325,14 +325,13 @@ export default function CommentSection() {
   };
 
   const handleUpvote = async (id: string) => {
-    if (votedIds.has(id)) return;
+    if (votedIds.includes(id)) return;
     const sb = getSupabase();
     if (!sb) return;
 
-    const newVoted = new Set(votedIds);
-    newVoted.add(id);
+    const newVoted = [...votedIds, id];
     setVotedIds(newVoted);
-    localStorage.setItem("pe-voted-ids", JSON.stringify(Array.from(newVoted)));
+    localStorage.setItem("pe-voted-ids", JSON.stringify(newVoted));
 
     // Optimistic update
     setComments((prev) =>
