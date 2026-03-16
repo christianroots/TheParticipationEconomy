@@ -332,7 +332,7 @@ export default function CommentSection() {
     const newVoted = new Set(votedIds);
     newVoted.add(id);
     setVotedIds(newVoted);
-    localStorage.setItem("pe-voted-ids", JSON.stringify([...newVoted]));
+    localStorage.setItem("pe-voted-ids", JSON.stringify(Array.from(newVoted)));
 
     // Optimistic update
     setComments((prev) =>
