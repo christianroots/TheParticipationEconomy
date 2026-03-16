@@ -202,7 +202,9 @@ function CommentCard({
           {/* Replies */}
           {replies.length > 0 && (
             <div className="mt-4 pl-4 border-l-2 border-rule space-y-4">
-              {replies.map((reply) => (
+              {replies.map((reply) => {
+                const replyVoted = votedIds.includes(reply.id);
+                return (
                 <motion.div
                   key={reply.id}
                   initial={{ opacity: 0, y: 5 }}
@@ -212,9 +214,9 @@ function CommentCard({
                   <div className="flex flex-col items-center pt-1">
                     <button
                       onClick={() => onUpvote(reply.id)}
-                      disabled={votedIds.includes(reply.id)}
+                      disabled={replyVoted}
                       className={`w-6 h-6 flex items-center justify-center rounded transition-colors ${
-                        votedIds.includes(reply.id)
+                        replyVoted
                           ? "text-primary bg-pull-bg"
                           : "text-gray-400 hover:text-primary hover:bg-pull-bg"
                       }`}
@@ -233,7 +235,7 @@ function CommentCard({
                     </button>
                     <span
                       className={`font-sans text-[10px] font-semibold ${
-                        votedIds.includes(reply.id) ? "text-primary" : "text-muted"
+                        replyVoted ? "text-primary" : "text-muted"
                       }`}
                     >
                       {reply.upvotes}
@@ -253,7 +255,8 @@ function CommentCard({
                     </p>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
