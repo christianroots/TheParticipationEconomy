@@ -106,7 +106,7 @@ function CommentCard({
   replies: Comment[];
   onUpvote: (id: string) => void;
   onReply: (name: string, content: string, parentId: string | null) => void;
-  votedIds: Set<string>;
+  votedIds: string[];
 }) {
   const [showReplyForm, setShowReplyForm] = useState(false);
   const hasVoted = votedIds.includes(comment.id);
