@@ -115,10 +115,11 @@ export default function PortfolioChart() {
                 stroke="#E5E7EB"
               />
               <Tooltip
-                formatter={(value: number) => [
-                  value >= 1000000
-                    ? `\u00a3${(value / 1000000).toFixed(2)}m`
-                    : `\u00a3${value.toLocaleString()}`,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={(value: any) => [
+                  Number(value) >= 1000000
+                    ? `\u00a3${(Number(value) / 1000000).toFixed(2)}m`
+                    : `\u00a3${Number(value).toLocaleString()}`,
                   "Portfolio Value",
                 ]}
                 labelFormatter={(label) => `Year ${label} (age ${18 + Number(label)})`}

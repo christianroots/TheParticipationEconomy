@@ -223,8 +223,9 @@ export default function FiscalChart() {
                 stroke="#E5E7EB"
               />
               <Tooltip
-                formatter={(value: number, name: string) => [
-                  formatValue(value),
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={(value: any, name: any) => [
+                  formatValue(Number(value)),
                   name === "matchCost"
                     ? "Match Cost"
                     : "Tax Revenue",

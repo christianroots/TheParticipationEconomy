@@ -117,8 +117,9 @@ export default function HousingChart() {
                 stroke="#E5E7EB"
               />
               <Tooltip
-                formatter={(value: number) => [
-                  `\u00a3${value.toLocaleString()}`,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={(value: any) => [
+                  `\u00a3${Number(value).toLocaleString()}`,
                   "Housing Equity",
                 ]}
                 labelFormatter={(label) => `Year ${label} (age ${18 + Number(label)})`}

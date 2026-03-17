@@ -170,9 +170,10 @@ export default function ComparisonChart() {
                 stroke="#E5E7EB"
               />
               <Tooltip
-                formatter={(value: number, name: string) => [
-                  value >= 1000
-                    ? `\u00a3${(value / 1000).toFixed(1)}m`
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={(value: any, name: any) => [
+                  Number(value) >= 1000
+                    ? `\u00a3${(Number(value) / 1000).toFixed(1)}m`
                     : `\u00a3${value}k`,
                   name === "current" ? "Current System" : "Participation Economy",
                 ]}

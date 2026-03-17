@@ -186,9 +186,10 @@ export default function NationalChart() {
                 stroke="#E5E7EB"
               />
               <Tooltip
-                formatter={(value: number) => [
-                  value >= 1000
-                    ? `\u00a3${(value / 1000).toFixed(1)} Trillion`
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={(value: any) => [
+                  Number(value) >= 1000
+                    ? `\u00a3${(Number(value) / 1000).toFixed(1)} Trillion`
                     : `\u00a3${value} Billion`,
                   "Net Citizen Capital",
                 ]}
