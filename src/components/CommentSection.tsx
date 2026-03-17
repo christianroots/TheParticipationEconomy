@@ -341,14 +341,14 @@ export default function CommentSection() {
       prev.map((c) => (c.id === id ? { ...c, upvotes: c.upvotes + 1 } : c))
     );
 
-    await sb.rpc("increment_upvote", { comment_id: id }).catch(() => {
+    const { error } = await sb.rpc("increment_upvote", { comment_id: id });
+    if (error) {
       // Fallback: direct update
-      sb
+      await sb
         .from("comments")
         .update({ upvotes: (comments.find((c) => c.id === id)?.upvotes || 0) + 1 })
-        .eq("id", id)
-        .then();
-    });
+        .eq("id", id);
+    }
   };
 
   // Separate top-level comments and replies
