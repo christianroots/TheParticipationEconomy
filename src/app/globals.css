@@ -19,6 +19,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fix nav link scroll offset (accounts for fixed nav + progress bar) */
+section[id] {
+  scroll-margin-top: 84px;
+}
+
 /* Print styles for PDF export */
 @media print {
   nav {

@@ -64,12 +64,21 @@ export default function Hero() {
         </motion.p>
 
         <motion.p
-          className="font-serif text-sm text-muted italic mb-10"
+          className="font-serif text-sm text-muted italic mb-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.5 }}
         >
           A concept by Christian Samuel
+        </motion.p>
+
+        <motion.p
+          className="font-sans text-xs text-muted mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.6 }}
+        >
+          ~25 minute read
         </motion.p>
 
         <motion.div
@@ -88,7 +97,7 @@ export default function Hero() {
             onClick={handlePrint}
             className="inline-flex items-center px-8 py-3.5 border border-rule text-muted font-sans text-sm font-semibold uppercase tracking-wider rounded hover:border-primary hover:text-primary transition-colors no-print"
           >
-            Download PDF
+            Save as PDF
           </button>
         </motion.div>
       </div>

@@ -18,12 +18,14 @@ import FiscalChart from "@/components/FiscalChart";
 import BenefitsGrid from "@/components/BenefitsGrid";
 import ComparisonChart from "@/components/ComparisonChart";
 import CommentSection from "@/components/CommentSection";
+import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="bg-white">
       <Navigation />
+      <BackToTop />
       <Hero />
 
       <div className="max-w-content mx-auto px-6 md:px-8">
@@ -466,6 +468,7 @@ export default function Home() {
           </div>
 
           <FiscalChart />
+          <p className="text-xs text-muted italic mt-3">Based on modelled assumptions. Figures are illustrative projections, not guaranteed outcomes.</p>
 
           <BodyText>
             <p>
@@ -512,6 +515,7 @@ export default function Home() {
           </BodyText>
 
           <PortfolioChart />
+          <p className="text-xs text-muted italic mt-3">Assumes 8% blended nominal return. Actual returns will vary with market conditions.</p>
 
           <div className="mt-14">
             <h3 className="font-serif text-2xl md:text-3xl text-text mb-6">
@@ -536,6 +540,7 @@ export default function Home() {
           </div>
 
           <HousingChart />
+          <p className="text-xs text-muted italic mt-3">Assumes 5% housing appreciation and 3.5% rental inflation. Actual values will vary by market.</p>
 
           <BodyText>
             <p>
@@ -814,6 +819,7 @@ export default function Home() {
           </BodyText>
 
           <ComparisonChart />
+          <p className="text-xs text-muted italic mt-3">Comparison based on modelled assumptions. Individual outcomes depend on spending, returns, and timing.</p>
 
           <BodyText>
             <p>
@@ -868,6 +874,7 @@ export default function Home() {
           </BodyText>
 
           <NationalChart />
+          <p className="text-xs text-muted italic mt-3">National projections based on modelled cohort assumptions. Subject to economic conditions and policy choices.</p>
 
           <BodyText>
             <p>
@@ -1028,28 +1035,39 @@ export default function Home() {
             </p>
           </BodyText>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-14">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-14 no-print">
             <button
               onClick={() => window.print()}
-              className="inline-flex items-center px-8 py-3.5 bg-primary text-white font-sans text-sm font-semibold uppercase tracking-wider rounded hover:bg-green-800 transition-colors no-print"
+              className="inline-flex items-center px-8 py-3.5 bg-primary text-white font-sans text-sm font-semibold uppercase tracking-wider rounded hover:bg-green-800 transition-colors"
             >
-              Download the White Paper
+              Save as PDF
             </button>
             <button
               onClick={() => {
-                if (navigator.share) {
-                  navigator.share({
-                    title: "The Participation Economy",
-                    text: "A framework for rebuilding capital ownership in modern market societies.",
-                    url: window.location.href,
-                  });
-                } else {
-                  navigator.clipboard.writeText(window.location.href);
-                }
+                const url = encodeURIComponent(window.location.href);
+                const text = encodeURIComponent("A framework for rebuilding capital ownership in modern market societies.");
+                window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, "_blank", "noopener");
               }}
-              className="inline-flex items-center px-8 py-3.5 border border-rule text-muted font-sans text-sm font-semibold uppercase tracking-wider rounded hover:border-primary hover:text-primary transition-colors no-print"
+              className="inline-flex items-center px-8 py-3.5 border border-rule text-muted font-sans text-sm font-semibold uppercase tracking-wider rounded hover:border-primary hover:text-primary transition-colors"
             >
-              Share this idea
+              Share on X
+            </button>
+            <button
+              onClick={() => {
+                const url = encodeURIComponent(window.location.href);
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank", "noopener");
+              }}
+              className="inline-flex items-center px-8 py-3.5 border border-rule text-muted font-sans text-sm font-semibold uppercase tracking-wider rounded hover:border-primary hover:text-primary transition-colors"
+            >
+              Share on LinkedIn
+            </button>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+              }}
+              className="inline-flex items-center px-8 py-3.5 border border-rule text-muted font-sans text-sm font-semibold uppercase tracking-wider rounded hover:border-primary hover:text-primary transition-colors"
+            >
+              Copy Link
             </button>
           </div>
         </AnimatedSection>
