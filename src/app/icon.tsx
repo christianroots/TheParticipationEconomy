@@ -10,18 +10,19 @@ export default function Icon() {
         style={{
           width: 32,
           height: 32,
-          background: "#15803D",
+          background: "#0E1A12",
           borderRadius: 6,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "white",
-          fontSize: 18,
+          color: "#C5D9A8",
+          fontSize: 12,
           fontWeight: 700,
           fontFamily: "Georgia, serif",
+          letterSpacing: "-0.5px",
         }}
       >
-        P
+        FP
       </div>
     ),
     { ...size }

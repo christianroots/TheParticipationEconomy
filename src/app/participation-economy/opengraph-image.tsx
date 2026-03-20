@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "First Principles — Christian Samuel";
+export const alt = "The Participation Economy — Turning Consumption Into Ownership";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,7 +10,7 @@ export default function OGImage() {
     (
       <div
         style={{
-          background: "linear-gradient(145deg, #0E1A12 0%, #152019 50%, #0A1209 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #ecfdf5 50%, #f0fdf4 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -22,37 +22,51 @@ export default function OGImage() {
       >
         <div
           style={{
-            fontSize: 14,
-            fontWeight: 500,
-            letterSpacing: "0.35em",
+            fontSize: 16,
+            fontWeight: 600,
+            letterSpacing: "0.3em",
             textTransform: "uppercase" as const,
-            color: "#8A9E8D",
-            marginBottom: 32,
+            color: "#15803D",
+            marginBottom: 24,
           }}
         >
-          CHRISTIAN SAMUEL
+          THE PARTICIPATION ECONOMY
         </div>
         <div
           style={{
-            fontSize: 72,
-            color: "#F0EDE4",
+            fontSize: 64,
+            color: "#1A1A1A",
             textAlign: "center" as const,
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
+            lineHeight: 1.15,
+            maxWidth: 900,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          First Principles
+          <span>Turning Consumption</span>
+          <span>Into Ownership</span>
         </div>
         <div
           style={{
             fontSize: 22,
-            color: "#8A9E8D",
-            marginTop: 28,
+            color: "#6B7280",
+            marginTop: 32,
             textAlign: "center" as const,
             maxWidth: 600,
           }}
         >
-          Long-form theses on economics, technology, and the future
+          A framework for rebuilding capital ownership in modern market societies
+        </div>
+        <div
+          style={{
+            fontSize: 16,
+            color: "#6B7280",
+            marginTop: 24,
+            fontStyle: "italic",
+          }}
+        >
+          A concept by Christian Samuel
         </div>
         <div
           style={{
@@ -60,8 +74,8 @@ export default function OGImage() {
             bottom: 40,
             left: 60,
             right: 60,
-            height: 2,
-            background: "#4A7C2F",
+            height: 3,
+            background: "#15803D",
             borderRadius: 2,
           }}
         />
