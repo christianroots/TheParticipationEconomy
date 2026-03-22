@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid,
+  Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer, ReferenceLine, Area, AreaChart,
 } from "recharts";
 

@@ -11,7 +11,6 @@ import PetrodollarTimeline from "@/components/empire/PetrodollarTimeline";
 import HistoricalTimeline from "@/components/empire/HistoricalTimeline";
 import AsymmetryTable from "@/components/empire/AsymmetryTable";
 import TaiwanScenarioCards from "@/components/empire/TaiwanScenarioCards";
-import AnimatedSection from "@/components/AnimatedSection";
 import USDebtChart from "@/components/empire/charts/USDebtChart";
 import USDReservesChart from "@/components/empire/charts/USDReservesChart";
 import MilitarySpendingChart from "@/components/empire/charts/MilitarySpendingChart";
