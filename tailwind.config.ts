@@ -9,28 +9,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Participation Economy (light theme)
+        // Participation Economy
         primary: "#15803D",
         text: "#1A1A1A",
         muted: "#6B7280",
         rule: "#E5E7EB",
-        "pull-bg": "#ECFDF5",
+        "pull-bg": "#F8F8F6",
         dark: "#1A1A1A",
-        // Abundance Thesis (dark theme)
-        "at-bg": "#0E1A12",
-        "at-surface": "#152019",
-        "at-text": "#F0EDE4",
-        "at-muted": "#8A9E8D",
-        "at-accent": "#4A7C2F",
-        "at-accent-light": "#6B9E4A",
-        "at-light": "#C5D9A8",
-        "at-rule": "#1A2E1F",
-        "at-pull-bg": "#1A2E1F",
-        // Hub
-        "hub-bg": "#0A0F0C",
-        "hub-surface": "#111A14",
-        "hub-text": "#F0EDE4",
-        "hub-muted": "#7A8E7D",
+        // Abundance Thesis (unified light theme)
+        "at-bg": "#FFFFFF",
+        "at-surface": "#F8F8F6",
+        "at-text": "#1A1A1A",
+        "at-muted": "#6B7280",
+        "at-accent": "#15803D",
+        "at-accent-light": "#1A9D4A",
+        "at-light": "#15803D",
+        "at-rule": "#E5E7EB",
+        "at-pull-bg": "#F8F8F6",
+        // Hub (unified light theme)
+        "hub-bg": "#FFFFFF",
+        "hub-surface": "#F8F8F6",
+        "hub-text": "#1A1A1A",
+        "hub-muted": "#6B7280",
       },
       fontFamily: {
         serif: ["Georgia", "Times New Roman", "serif"],

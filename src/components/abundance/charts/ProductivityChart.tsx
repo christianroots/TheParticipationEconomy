@@ -22,8 +22,8 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   if (!active || !payload?.length) return null;
   const cleaned = label?.replace(/\n/g, " ");
   return (
-    <div className="bg-at-surface border border-at-rule/50 rounded px-4 py-3 font-mono text-[11px]">
-      <p className="text-at-text mb-2">{cleaned}</p>
+    <div className="bg-gray-50 border border-rule/50 rounded px-4 py-3 font-mono text-[11px]">
+      <p className="text-text mb-2">{cleaned}</p>
       {payload.map((p) => (
         <p key={p.name} style={{ color: p.color }} className="mb-0.5">
           {p.name}: {p.value} {p.value === 1 ? "person" : "people"}
@@ -50,48 +50,48 @@ export default function ProductivityChart() {
 
   return (
     <div ref={ref}>
-      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-at-accent mb-2">
+      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary mb-2">
         Chart 5
       </p>
-      <h3 className="font-playfair text-xl md:text-2xl text-at-text mb-2">
+      <h3 className="font-playfair text-xl md:text-2xl text-text mb-2">
         AI Productivity Compression
       </h3>
-      <p className="font-mono text-[11px] text-at-muted mb-6">
+      <p className="font-mono text-[11px] text-muted mb-6">
         People needed to produce the same output: pre-AI vs. with AI
       </p>
 
       <div className={`transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
         <ResponsiveContainer width="100%" height={380}>
           <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 10 }}>
-            <CartesianGrid stroke="#1A2E1F" strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="sector"
-              tick={{ fill: "#8A9E8D", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }}
+              tick={{ fill: "#6B7280", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }}
               tickLine={false}
               interval={0}
             />
             <YAxis
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }}
               tickLine={false}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
               verticalAlign="bottom"
-              wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#8A9E8D", paddingTop: 12 }}
+              wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#6B7280", paddingTop: 12 }}
             />
             <Bar dataKey="before" name="Pre-AI" fill={RED} radius={[3, 3, 0, 0]} animationDuration={1200}>
-              <LabelList dataKey="before" position="top" fill="#8A9E8D" fontSize={10} fontFamily="var(--font-ibm-plex-mono)" />
+              <LabelList dataKey="before" position="top" fill="#6B7280" fontSize={10} fontFamily="var(--font-ibm-plex-mono)" />
             </Bar>
             <Bar dataKey="after" name="With AI" fill={G} radius={[3, 3, 0, 0]} animationDuration={1200} animationBegin={300}>
-              <LabelList dataKey="after" position="top" fill="#8A9E8D" fontSize={10} fontFamily="var(--font-ibm-plex-mono)" />
+              <LabelList dataKey="after" position="top" fill="#6B7280" fontSize={10} fontFamily="var(--font-ibm-plex-mono)" />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
 
-      <p className="font-mono text-[10px] text-at-muted/50 italic mt-4">
+      <p className="font-mono text-[10px] text-muted/50 italic mt-4">
         Based on GitHub Copilot studies, Klarna AI implementation data, and industry reports.
       </p>
     </div>

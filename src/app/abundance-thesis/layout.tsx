@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Abundance Thesis — First Principles",
+  title: "The Abundance Thesis — Order Effects",
   description:
     "Why AI will make the world richer, freer, and more human than mainstream commentary suggests. Three propositions on deflation, the solo economy, and the blue collar premium.",
   openGraph: {

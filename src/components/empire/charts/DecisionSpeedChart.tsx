@@ -6,17 +6,17 @@ import {
   Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  { sector: "Apparel", today: 38, robotics: 8 },
-  { sector: "Electronics", today: 24, robotics: 5 },
-  { sector: "Automotive", today: 20, robotics: 4 },
-  { sector: "Furniture", today: 33, robotics: 7 },
-  { sector: "Food", today: 22, robotics: 6 },
-  { sector: "Pharma", today: 18, robotics: 4 },
-];
-
 const RED = "#C0392B";
 const G = "#4A7C2F";
+
+const data = [
+  { category: "Nuclear", china: 6, west: 17 },
+  { category: "High-Speed Rail", china: 3, west: 12 },
+  { category: "Offshore Wind", china: 2, west: 7 },
+  { category: "Data Centre", china: 1.5, west: 4 },
+  { category: "LNG Terminal", china: 3, west: 8 },
+  { category: "Highway", china: 2, west: 9 },
+];
 
 function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number; name: string; color: string }>; label?: string }) {
   if (!active || !payload?.length) return null;
@@ -25,14 +25,14 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
       <p className="text-text mb-2">{label}</p>
       {payload.map((p) => (
         <p key={p.name} style={{ color: p.color }} className="mb-0.5">
-          {p.name}: {p.value}%
+          {p.name}: {p.value} years
         </p>
       ))}
     </div>
   );
 }
 
-export default function ManufacturingLabourChart() {
+export default function DecisionSpeedChart() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -50,44 +50,47 @@ export default function ManufacturingLabourChart() {
   return (
     <div ref={ref}>
       <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary mb-2">
-        Chart 2
+        Chart 8
       </p>
       <h3 className="font-playfair text-xl md:text-2xl text-text mb-2">
-        Labour as % of Manufacturing Cost
+        Decision-to-Build Speed
       </h3>
       <p className="font-mono text-[11px] text-muted mb-6">
-        Today vs. post-robotics projections by sector
+        Years from approval to completion, China vs. West
       </p>
 
       <div className={`transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
         <ResponsiveContainer width="100%" height={380}>
-          <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
-            <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" vertical={false} />
+          <BarChart data={data} layout="vertical" margin={{ top: 10, right: 30, left: 20, bottom: 10 }}>
+            <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" horizontal={false} />
             <XAxis
-              dataKey="sector"
+              type="number"
               tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
               axisLine={{ stroke: "#E5E7EB" }}
               tickLine={false}
+              tickFormatter={(v: number) => `${v}yr`}
             />
             <YAxis
+              type="category"
+              dataKey="category"
               tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
               axisLine={{ stroke: "#E5E7EB" }}
               tickLine={false}
-              tickFormatter={(v: number) => `${v}%`}
+              width={110}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
               verticalAlign="bottom"
               wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#6B7280", paddingTop: 12 }}
             />
-            <Bar dataKey="today" name="Today" fill={RED} radius={[3, 3, 0, 0]} animationDuration={1200} />
-            <Bar dataKey="robotics" name="Post-Robotics" fill={G} radius={[3, 3, 0, 0]} animationDuration={1200} animationBegin={300} />
+            <Bar dataKey="china" name="China" fill={RED} radius={[0, 3, 3, 0]} animationDuration={1200} />
+            <Bar dataKey="west" name="West" fill={G} radius={[0, 3, 3, 0]} animationDuration={1200} animationBegin={300} />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
       <p className="font-mono text-[10px] text-muted/50 italic mt-4">
-        Source: McKinsey Global Institute (2022). Post-robotics figures are modelled projections.
+        Source: Author&apos;s analysis, McKinsey Global Institute.
       </p>
     </div>
   );

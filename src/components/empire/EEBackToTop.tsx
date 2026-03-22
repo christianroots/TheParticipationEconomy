@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function ATBackToTop() {
+export default function EEBackToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

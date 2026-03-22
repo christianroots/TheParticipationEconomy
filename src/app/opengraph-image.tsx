@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "First Principles — Christian Samuel";
+export const alt = "Order Effects — Christian Samuel";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,7 +10,7 @@ export default function OGImage() {
     (
       <div
         style={{
-          background: "linear-gradient(145deg, #0E1A12 0%, #152019 50%, #0A1209 100%)",
+          background: "#FFFFFF",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -26,7 +26,7 @@ export default function OGImage() {
             fontWeight: 500,
             letterSpacing: "0.35em",
             textTransform: "uppercase" as const,
-            color: "#8A9E8D",
+            color: "#6B7280",
             marginBottom: 32,
           }}
         >
@@ -35,18 +35,18 @@ export default function OGImage() {
         <div
           style={{
             fontSize: 72,
-            color: "#F0EDE4",
+            color: "#1A1A1A",
             textAlign: "center" as const,
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
           }}
         >
-          First Principles
+          Order Effects
         </div>
         <div
           style={{
             fontSize: 22,
-            color: "#8A9E8D",
+            color: "#6B7280",
             marginTop: 28,
             textAlign: "center" as const,
             maxWidth: 600,
@@ -61,7 +61,7 @@ export default function OGImage() {
             left: 60,
             right: 60,
             height: 2,
-            background: "#4A7C2F",
+            background: "#15803D",
             borderRadius: 2,
           }}
         />

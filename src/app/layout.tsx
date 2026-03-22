@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     "https://the-participation-economy-6eorztp6p.vercel.app"
   ),
-  title: "First Principles — Christian Samuel",
+  title: "Order Effects — Christian Samuel",
   description:
     "Long-form theses on economics, technology, and the future.",
 };

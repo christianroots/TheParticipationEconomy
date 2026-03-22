@@ -35,8 +35,8 @@ const RED = "#C0392B";
 function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number; name: string; color: string; dataKey: string }>; label?: string }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-at-surface border border-at-rule/50 rounded px-4 py-3 font-mono text-[11px]">
-      <p className="text-at-text mb-2">{label}</p>
+    <div className="bg-gray-50 border border-rule/50 rounded px-4 py-3 font-mono text-[11px]">
+      <p className="text-text mb-2">{label}</p>
       {payload.filter((p) => p.value != null).map((p) => (
         <p key={p.dataKey} style={{ color: p.color }} className="mb-0.5">
           {p.name}: {p.value}
@@ -63,36 +63,36 @@ export default function GoodsServicesChart() {
 
   return (
     <div ref={ref}>
-      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-at-accent mb-2">
+      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary mb-2">
         Chart 3
       </p>
-      <h3 className="font-playfair text-xl md:text-2xl text-at-text mb-2">
+      <h3 className="font-playfair text-xl md:text-2xl text-text mb-2">
         Goods vs. Services Inflation
       </h3>
-      <p className="font-mono text-[11px] text-at-muted mb-6">
+      <p className="font-mono text-[11px] text-muted mb-6">
         CPI index (1990 = 100). Dashed lines = AI-era projections.
       </p>
 
       <div className={`transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
         <ResponsiveContainer width="100%" height={380}>
           <LineChart data={combined} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
-            <CartesianGrid stroke="#1A2E1F" strokeDasharray="3 3" />
+            <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
             <XAxis
               dataKey="year"
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }}
               tickLine={false}
             />
             <YAxis
               domain={[60, 300]}
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }}
               tickLine={false}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
               verticalAlign="bottom"
-              wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#8A9E8D", paddingTop: 12 }}
+              wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#6B7280", paddingTop: 12 }}
             />
             <ReferenceLine
               x="2023"
@@ -110,7 +110,7 @@ export default function GoodsServicesChart() {
         </ResponsiveContainer>
       </div>
 
-      <p className="font-mono text-[10px] text-at-muted/50 italic mt-4">
+      <p className="font-mono text-[10px] text-muted/50 italic mt-4">
         Source: US Bureau of Labor Statistics CPI series 1990–2024. Projections are illustrative.
       </p>
     </div>

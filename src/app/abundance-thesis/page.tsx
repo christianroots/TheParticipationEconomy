@@ -22,7 +22,7 @@ import ApprenticeshipChart from "@/components/abundance/charts/ApprenticeshipCha
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <motion.p
-      className="font-mono text-[11px] tracking-[0.3em] uppercase text-at-accent mb-4"
+      className="font-mono text-[11px] tracking-[0.3em] uppercase text-primary mb-4"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -36,7 +36,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <motion.h2
-      className="font-playfair text-3xl md:text-4xl lg:text-[2.75rem] text-at-text leading-tight mb-4"
+      className="font-playfair text-3xl md:text-4xl lg:text-[2.75rem] text-text leading-tight mb-4"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -50,7 +50,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 function Subheading({ children }: { children: React.ReactNode }) {
   return (
     <motion.p
-      className="font-lora text-lg md:text-xl text-at-muted italic mb-10 leading-relaxed"
+      className="font-lora text-lg md:text-xl text-muted italic mb-10 leading-relaxed"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -64,7 +64,7 @@ function Subheading({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
-      className="font-lora text-[17px] md:text-lg text-at-text/90 leading-[1.85] space-y-6 mb-10"
+      className="font-lora text-[17px] md:text-lg text-text/90 leading-[1.85] space-y-6 mb-10"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -78,13 +78,13 @@ function Body({ children }: { children: React.ReactNode }) {
 function PullQuote({ children }: { children: React.ReactNode }) {
   return (
     <motion.blockquote
-      className="my-14 md:my-20 py-8 md:py-10 px-6 md:px-10 border-t border-b border-at-accent/40 text-center"
+      className="my-14 md:my-20 py-8 md:py-10 px-6 md:px-10 border-t border-b border-primary/20 text-center"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <p className="font-playfair text-xl md:text-2xl lg:text-[1.65rem] text-at-text italic leading-relaxed max-w-2xl mx-auto">
+      <p className="font-playfair text-xl md:text-2xl lg:text-[1.65rem] text-text italic leading-relaxed max-w-2xl mx-auto">
         {children}
       </p>
     </motion.blockquote>
@@ -92,7 +92,7 @@ function PullQuote({ children }: { children: React.ReactNode }) {
 }
 
 function Divider() {
-  return <hr className="border-t border-at-rule/30 my-16 md:my-24" />;
+  return <hr className="border-t border-rule my-16 md:my-24" />;
 }
 
 function ChartContainer({ children }: { children: React.ReactNode }) {
@@ -107,7 +107,7 @@ function ChartContainer({ children }: { children: React.ReactNode }) {
 
 export default function AbundanceThesisPage() {
   return (
-    <main className="bg-at-bg text-at-text min-h-screen theme-dark">
+    <main className="bg-white text-text min-h-screen">
       <ATNavigation />
       <ATBackToTop />
       <ATHero />
@@ -430,7 +430,7 @@ export default function AbundanceThesisPage() {
           {/* Sub-section: Professional Services */}
           <Body>
             <p>
-              <strong className="text-at-text font-semibold">
+              <strong className="text-text font-semibold">
                 Professional Services Become a Consumer Good.
               </strong>{" "}
               Legal advice, financial modelling, architectural drafting, medical
@@ -444,7 +444,7 @@ export default function AbundanceThesisPage() {
           {/* Sub-section: Solo Economy */}
           <Body>
             <p>
-              <strong className="text-at-text font-semibold">
+              <strong className="text-text font-semibold">
                 The Solo Operator Economy Matures.
               </strong>{" "}
               By 2030, a significant share of the professional workforce operates
@@ -459,7 +459,7 @@ export default function AbundanceThesisPage() {
           {/* Sub-section: Apprenticeships */}
           <Body>
             <p>
-              <strong className="text-at-text font-semibold">
+              <strong className="text-text font-semibold">
                 Apprenticeships Become Competitive with Degrees.
               </strong>{" "}
               As the premium on physical work rises and the premium on generic
@@ -479,7 +479,7 @@ export default function AbundanceThesisPage() {
           {/* Sub-section: Energy */}
           <Body>
             <p>
-              <strong className="text-at-text font-semibold">
+              <strong className="text-text font-semibold">
                 Energy Becomes the Binding Constraint.
               </strong>{" "}
               AI&rsquo;s growth is physically dependent on the workers it supposedly
@@ -500,7 +500,7 @@ export default function AbundanceThesisPage() {
           {/* Sub-section: Uneven Transition */}
           <Body>
             <p>
-              <strong className="text-at-text font-semibold">
+              <strong className="text-text font-semibold">
                 The Transition Period Remains Uneven.
               </strong>{" "}
               None of this means the transition is painless. It will not be. Some
@@ -571,10 +571,10 @@ export default function AbundanceThesisPage() {
         {/* SOURCES                                            */}
         {/* ═══════════════════════════════════════════════════ */}
         <section className="pb-16">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-at-accent mb-6">
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary mb-6">
             Sources &amp; Methodology
           </p>
-          <div className="font-mono text-[11px] text-at-muted/70 leading-[1.9] space-y-2">
+          <div className="font-mono text-[11px] text-muted/70 leading-[1.9] space-y-2">
             <p>
               Historic price data: Nordhaus (2006) on cost of light; Our World in
               Data computing cost series; NIH genome sequencing cost data.
@@ -596,7 +596,7 @@ export default function AbundanceThesisPage() {
               2024; ATRI Truck Driver Demographics 2024; IRU Global Truck Driver
               Report 2024. AI energy: IEA Data Centres &amp; Networks report (2024).
             </p>
-            <p className="pt-2 text-at-muted/50">
+            <p className="pt-2 text-muted/50">
               All projections are illustrative models built from the underlying data.
               This is a work of analysis and argument, not financial or investment
               advice.

@@ -13,7 +13,6 @@ const theses = [
     href: "/participation-economy",
     year: "2025",
     readTime: "25 min",
-    theme: "light" as const,
   },
   {
     number: "II",
@@ -24,33 +23,42 @@ const theses = [
     href: "/abundance-thesis",
     year: "2026",
     readTime: "20 min",
-    theme: "dark" as const,
+  },
+  {
+    number: "III",
+    title: "Empire on the Edge",
+    subtitle: "How the World\u2019s Last Superpower Is Fighting Five Wars at Once",
+    description:
+      "A geopolitical and financial thesis. The sequel to The Great Reset (2020). Debt, energy, war, and the slow erosion of the dollar system \u2014 told through the data.",
+    href: "/empire-on-the-edge",
+    year: "2025",
+    readTime: "35 min",
   },
 ];
 
 export default function Hub() {
   return (
-    <main className="min-h-screen bg-hub-bg text-hub-text font-playfair">
+    <main className="min-h-screen bg-white text-text font-playfair">
       {/* Hero */}
       <section className="min-h-[70vh] flex flex-col items-center justify-center px-6 relative">
         <motion.p
-          className="font-mono text-[11px] tracking-[0.35em] uppercase text-hub-muted mb-8"
+          className="font-mono text-[11px] tracking-[0.35em] uppercase text-muted mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          Christian Samuel
+          Written by Christian Samuel
         </motion.p>
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-playfair text-hub-text text-center leading-[1.05] tracking-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-playfair text-text text-center leading-[1.05] tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          First Principles
+          Order Effects
         </motion.h1>
         <motion.p
-          className="font-lora text-lg md:text-xl text-hub-muted mt-6 text-center max-w-lg italic"
+          className="font-lora text-lg md:text-xl text-muted mt-6 text-center max-w-lg italic"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -69,10 +77,10 @@ export default function Hub() {
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           >
-            <svg width="20" height="28" viewBox="0 0 20 28" fill="none" stroke="#7A8E7D" strokeWidth="1.5">
+            <svg width="20" height="28" viewBox="0 0 20 28" fill="none" stroke="#9CA3AF" strokeWidth="1.5">
               <rect x="1" y="1" width="18" height="26" rx="9" />
               <motion.circle
-                cx="10" cy="8" r="2" fill="#7A8E7D"
+                cx="10" cy="8" r="2" fill="#9CA3AF"
                 animate={{ cy: [8, 18, 8] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               />
@@ -92,40 +100,34 @@ export default function Hub() {
               transition={{ duration: 0.6, delay: 1.0 + i * 0.2 }}
             >
               <Link href={thesis.href} className="group block">
-                <div
-                  className={`relative rounded-lg border transition-all duration-300 overflow-hidden ${
-                    thesis.theme === "light"
-                      ? "bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.05]"
-                      : "bg-at-surface/40 border-at-accent/20 hover:border-at-accent/40 hover:bg-at-surface/60"
-                  } p-8 md:p-10`}
-                >
+                <div className="relative border border-rule rounded-lg transition-all duration-300 overflow-hidden hover:border-muted hover:shadow-sm p-8 md:p-10">
                   {/* Overline */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-hub-muted">
+                    <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted">
                       Thesis {thesis.number} · {thesis.year}
                     </span>
-                    <span className="font-mono text-[10px] tracking-wider text-hub-muted">
+                    <span className="font-mono text-[10px] tracking-wider text-muted">
                       {thesis.readTime} read
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-2xl md:text-3xl font-playfair text-hub-text group-hover:text-at-light transition-colors duration-300 mb-2">
+                  <h2 className="text-2xl md:text-3xl font-playfair text-text group-hover:text-primary transition-colors duration-300 mb-2">
                     {thesis.title}
                   </h2>
 
                   {/* Subtitle */}
-                  <p className="font-lora text-base md:text-lg text-hub-muted italic mb-4">
+                  <p className="font-lora text-base md:text-lg text-muted italic mb-4">
                     {thesis.subtitle}
                   </p>
 
                   {/* Description */}
-                  <p className="font-lora text-sm text-hub-muted/70 leading-relaxed max-w-xl">
+                  <p className="font-lora text-sm text-muted/70 leading-relaxed max-w-xl">
                     {thesis.description}
                   </p>
 
                   {/* Read arrow */}
-                  <div className="mt-6 flex items-center gap-2 font-mono text-xs tracking-wider uppercase text-at-accent group-hover:text-at-light transition-colors duration-300">
+                  <div className="mt-6 flex items-center gap-2 font-mono text-xs tracking-wider uppercase text-primary group-hover:text-primary transition-colors duration-300">
                     <span>Read</span>
                     <svg
                       width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -144,9 +146,9 @@ export default function Hub() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/[0.06] py-12 text-center">
-        <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-hub-muted">
-          First Principles · Christian Samuel · 2025–2026
+      <footer className="border-t border-rule py-12 text-center">
+        <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted">
+          Order Effects · Christian Samuel · 2025–2026
         </p>
       </footer>
     </main>

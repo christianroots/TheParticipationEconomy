@@ -57,8 +57,8 @@ type View = "cumulative" | "annual";
 function CustomTooltip({ active, payload, label, view }: { active?: boolean; payload?: Array<{ value: number; name: string; color: string }>; label?: number; view: View }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-at-surface border border-at-rule/50 rounded px-4 py-3 font-mono text-[11px]">
-      <p className="text-at-text mb-2">Age {label}</p>
+    <div className="bg-gray-50 border border-rule/50 rounded px-4 py-3 font-mono text-[11px]">
+      <p className="text-text mb-2">Age {label}</p>
       {payload.map((p) => (
         <p key={p.name} style={{ color: p.color }} className="mb-0.5">
           {p.name}: £{view === "cumulative" ? `${Math.round(p.value / 1000)}k` : `${p.value.toFixed(1)}k`}
@@ -98,10 +98,10 @@ export default function ApprenticeshipChart() {
 
   return (
     <div ref={ref}>
-      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-at-accent mb-2">
+      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary mb-2">
         Chart 9
       </p>
-      <h3 className="font-playfair text-xl md:text-2xl text-at-text mb-2">
+      <h3 className="font-playfair text-xl md:text-2xl text-text mb-2">
         Apprenticeship vs. Degree: Lifetime Earnings
       </h3>
 
@@ -111,8 +111,8 @@ export default function ApprenticeshipChart() {
           onClick={() => setView("cumulative")}
           className={`font-mono text-[11px] tracking-wider px-4 py-2 rounded transition-colors ${
             view === "cumulative"
-              ? "bg-at-accent text-at-text"
-              : "bg-at-surface text-at-muted hover:text-at-text border border-at-rule/30"
+              ? "bg-at-accent text-text"
+              : "bg-gray-50 text-muted hover:text-text border border-rule/30"
           }`}
         >
           Cumulative Wealth
@@ -121,8 +121,8 @@ export default function ApprenticeshipChart() {
           onClick={() => setView("annual")}
           className={`font-mono text-[11px] tracking-wider px-4 py-2 rounded transition-colors ${
             view === "annual"
-              ? "bg-at-accent text-at-text"
-              : "bg-at-surface text-at-muted hover:text-at-text border border-at-rule/30"
+              ? "bg-at-accent text-text"
+              : "bg-gray-50 text-muted hover:text-text border border-rule/30"
           }`}
         >
           Annual Earnings
@@ -132,16 +132,16 @@ export default function ApprenticeshipChart() {
       <div className={`transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={chartData} margin={{ top: 10, right: 10, left: 20, bottom: 10 }}>
-            <CartesianGrid stroke="#1A2E1F" strokeDasharray="3 3" />
+            <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
             <XAxis
               dataKey="age"
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }} tickLine={false}
-              label={{ value: "Age", position: "insideBottom", offset: -5, fill: "#8A9E8D", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }} tickLine={false}
+              label={{ value: "Age", position: "insideBottom", offset: -5, fill: "#6B7280", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
             />
             <YAxis
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }} tickLine={false}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }} tickLine={false}
               tickFormatter={(v: number) =>
                 view === "cumulative"
                   ? v >= 1000 ? `£${Math.round(v / 1000)}k` : `£${v}`
@@ -149,7 +149,7 @@ export default function ApprenticeshipChart() {
               }
             />
             <Tooltip content={<CustomTooltip view={view} />} />
-            <Legend verticalAlign="bottom" wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#8A9E8D", paddingTop: 12 }} />
+            <Legend verticalAlign="bottom" wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#6B7280", paddingTop: 12 }} />
             <Line
               type="monotone" dataKey="apprentice" name="Apprentice"
               stroke={G} strokeWidth={2.5} dot={false}
@@ -166,12 +166,12 @@ export default function ApprenticeshipChart() {
                 y={cumulative.find((d) => d.age === crossoverAge)?.graduate || 0}
                 r={6}
                 fill={RED}
-                stroke="#F0EDE4"
+                stroke="#1A1A1A"
                 strokeWidth={2}
                 label={{
                   value: `Graduate overtakes ~age ${crossoverAge}`,
                   position: "top",
-                  fill: "#8A9E8D",
+                  fill: "#6B7280",
                   fontSize: 10,
                   fontFamily: "var(--font-ibm-plex-mono)",
                   offset: 15,
@@ -183,14 +183,14 @@ export default function ApprenticeshipChart() {
       </div>
 
       {view === "cumulative" && (
-        <p className="font-mono text-[11px] text-at-muted mt-4">
+        <p className="font-mono text-[11px] text-muted mt-4">
           The apprentice starts earning at 18 with no debt. The graduate carries £52k in student debt
           and doesn&rsquo;t earn until 21. The apprentice maintains a cumulative wealth lead until
           {crossoverAge ? ` roughly age ${crossoverAge}` : " late career"}.
         </p>
       )}
 
-      <p className="font-mono text-[10px] text-at-muted/50 italic mt-4">
+      <p className="font-mono text-[10px] text-muted/50 italic mt-4">
         Model: Apprentice starts at £24k/yr age 18, ~3.5% annual growth. Graduate starts at £28k/yr age 21, ~3% growth, £52k student debt.
       </p>
     </div>

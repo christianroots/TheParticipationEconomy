@@ -5,15 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Propositions", href: "#propositions" },
-  { label: "Deflation", href: "#proposition-one" },
-  { label: "Knowledge Work", href: "#proposition-two" },
-  { label: "Blue Collar", href: "#proposition-three" },
-  { label: "2030", href: "#the-world-2030" },
-  { label: "Conclusion", href: "#conclusion" },
+  { label: "Framework", href: "#part-one" },
+  { label: "Wars", href: "#part-two" },
+  { label: "Diagnosis", href: "#part-three" },
+  { label: "What Next", href: "#part-four" },
 ];
 
-export default function ATNavigation() {
+export default function EENavigation() {
   const [progress, setProgress] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -49,7 +47,6 @@ export default function ATNavigation() {
 
   return (
     <>
-      {/* Progress bar */}
       <div className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-transparent">
         <motion.div
           className="h-full bg-primary"
@@ -58,7 +55,6 @@ export default function ATNavigation() {
         />
       </div>
 
-      {/* Nav */}
       <nav
         className={`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
@@ -67,15 +63,13 @@ export default function ATNavigation() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
-          {/* Home link */}
           <Link
             href="/"
             className="font-mono text-[10px] tracking-[0.25em] uppercase text-muted hover:text-text transition-colors"
           >
-            ← Order Effects
+            &larr; Order Effects
           </Link>
 
-          {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
@@ -92,7 +86,6 @@ export default function ATNavigation() {
             ))}
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="lg:hidden text-muted hover:text-text p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -108,7 +101,6 @@ export default function ATNavigation() {
           </button>
         </div>
 
-        {/* Mobile menu */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div

@@ -69,13 +69,9 @@ section[id] {
   background: #9ca3af;
 }
 
-/* Dark theme scrollbar (for AT pages) */
-.theme-dark::-webkit-scrollbar-thumb {
-  background: #2a3e2e;
-}
-
-.theme-dark::-webkit-scrollbar-thumb:hover {
-  background: #3a5440;
+/* Selection styling */
+::selection {
+  background: rgba(21, 128, 61, 0.12);
 }
 
 /* Recharts tooltip styling */

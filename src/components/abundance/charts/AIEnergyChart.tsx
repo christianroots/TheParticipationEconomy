@@ -23,8 +23,8 @@ const G = "#4A7C2F";
 function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number; name: string; color: string }>; label?: string }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-at-surface border border-at-rule/50 rounded px-4 py-3 font-mono text-[11px]">
-      <p className="text-at-text mb-2">{label}</p>
+    <div className="bg-gray-50 border border-rule/50 rounded px-4 py-3 font-mono text-[11px]">
+      <p className="text-text mb-2">{label}</p>
       {payload.map((p) => (
         <p key={p.name} style={{ color: p.color }} className="mb-0.5">
           {p.name}: {p.value}{p.name.includes("Power") ? " TWh" : "k"}
@@ -51,51 +51,51 @@ export default function AIEnergyChart() {
 
   return (
     <div ref={ref}>
-      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-at-accent mb-2">
+      <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary mb-2">
         Chart 8
       </p>
-      <h3 className="font-playfair text-xl md:text-2xl text-at-text mb-2">
+      <h3 className="font-playfair text-xl md:text-2xl text-text mb-2">
         AI Energy Demand &amp; Infrastructure Jobs
       </h3>
-      <p className="font-mono text-[11px] text-at-muted mb-4">
+      <p className="font-mono text-[11px] text-muted mb-4">
         Data centre power demand (TWh) and infrastructure jobs (thousands)
       </p>
 
       {/* Stat highlight */}
-      <div className="bg-at-surface border border-at-rule/30 rounded p-4 mb-6">
-        <p className="font-mono text-[12px] text-at-text">
+      <div className="bg-gray-50 border border-rule/30 rounded p-4 mb-6">
+        <p className="font-mono text-[12px] text-text">
           AI data centre power: <span className="text-amber-400 font-semibold">17 TWh → 190 TWh</span> (×11 by 2030).{" "}
-          <span className="text-at-muted">AI&rsquo;s growth is physically dependent on the workers it supposedly threatens.</span>
+          <span className="text-muted">AI&rsquo;s growth is physically dependent on the workers it supposedly threatens.</span>
         </p>
       </div>
 
       <div className={`transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
         <ResponsiveContainer width="100%" height={380}>
           <ComposedChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
-            <CartesianGrid stroke="#1A2E1F" strokeDasharray="3 3" />
+            <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
             <XAxis
               dataKey="year"
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }} tickLine={false}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }} tickLine={false}
             />
             <YAxis
               yAxisId="power"
               orientation="left"
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }} tickLine={false}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }} tickLine={false}
               tickFormatter={(v: number) => `${v} TWh`}
-              label={{ value: "Power (TWh)", angle: -90, position: "insideLeft", fill: "#8A9E8D", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
+              label={{ value: "Power (TWh)", angle: -90, position: "insideLeft", fill: "#6B7280", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
             />
             <YAxis
               yAxisId="jobs"
               orientation="right"
-              tick={{ fill: "#8A9E8D", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
-              axisLine={{ stroke: "#1A2E1F" }} tickLine={false}
+              tick={{ fill: "#6B7280", fontSize: 11, fontFamily: "var(--font-ibm-plex-mono)" }}
+              axisLine={{ stroke: "#E5E7EB" }} tickLine={false}
               tickFormatter={(v: number) => `${v}k`}
-              label={{ value: "Jobs (thousands)", angle: 90, position: "insideRight", fill: "#8A9E8D", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
+              label={{ value: "Jobs (thousands)", angle: 90, position: "insideRight", fill: "#6B7280", fontSize: 10, fontFamily: "var(--font-ibm-plex-mono)" }}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Legend verticalAlign="bottom" wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#8A9E8D", paddingTop: 12 }} />
+            <Legend verticalAlign="bottom" wrapperStyle={{ fontFamily: "var(--font-ibm-plex-mono)", fontSize: 11, color: "#6B7280", paddingTop: 12 }} />
             <Area
               yAxisId="power"
               type="monotone"
@@ -122,7 +122,7 @@ export default function AIEnergyChart() {
         </ResponsiveContainer>
       </div>
 
-      <p className="font-mono text-[10px] text-at-muted/50 italic mt-4">
+      <p className="font-mono text-[10px] text-muted/50 italic mt-4">
         Source: IEA Data Centres &amp; Networks report (2024). Jobs figures are modelled estimates.
       </p>
     </div>
