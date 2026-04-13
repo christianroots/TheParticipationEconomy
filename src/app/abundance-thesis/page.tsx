@@ -120,19 +120,19 @@ export default function AbundanceThesisPage() {
           <SectionLabel>A Personal Note</SectionLabel>
           <Body>
             <p>
-              Eighteen months ago, I was in a darker place about all of this. Not
-              personally — but intellectually. I could see clearly what AI was going
-              to do to the labour market, and the picture felt brutal. White collar
-              jobs, hollowed out. A generation of graduates, displaced. The knowledge
-              economy, the one we&rsquo;d all been told to aim for, quietly collapsing
-              under the weight of software that could do the same work in seconds.
+              I got this wrong at first. Completely, embarrassingly wrong. Eighteen
+              months ago I looked at what AI was doing to the labour market and
+              thought: this is going to be brutal. White collar jobs, hollowed out.
+              A generation of graduates, displaced. The knowledge economy &mdash; the
+              one we&rsquo;d all been told to aim for &mdash; quietly collapsing under
+              the weight of software that could do the same work in seconds.
             </p>
             <p>
-              What changed my mind wasn&rsquo;t wishful thinking. It was following the
-              second and third-order effects further than most people bother to. It
-              was asking not just what AI destroys, but what it creates in the
-              destruction. It was noticing that deflationary technologies don&rsquo;t
-              shrink economies. They expand them.
+              Then I did something most commentators don&rsquo;t bother doing. I
+              followed the second and third-order effects. Not just what AI destroys,
+              but what it creates in the destruction. And the picture flipped
+              completely. Deflationary technologies don&rsquo;t shrink economies.
+              They expand them. Every time. Without exception.
             </p>
             <p>
               Three propositions sit at the heart of this argument. They form a chain
@@ -160,27 +160,28 @@ export default function AbundanceThesisPage() {
           <SectionLabel>Proposition One</SectionLabel>
           <SectionHeading>The Great Deflation</SectionHeading>
           <Subheading>
-            AI is the most powerful deflationary force in human history — and that
-            is unambiguously good news
+            AI is the most powerful deflationary force in human history &mdash; and
+            economists are panicking about the wrong thing
           </Subheading>
 
           <Body>
             <p>
-              Deflation has a bad reputation in economics because economists mostly
-              encounter it in the context of recession: prices fall because demand
-              collapses, because people stop spending, because confidence evaporates.
-              That kind of deflation — demand-side deflation — is genuinely harmful.
+              Economists hear the word &ldquo;deflation&rdquo; and reach for the
+              panic button. Which is understandable, because the deflation they
+              usually encounter is the demand-side kind: prices fall because nobody
+              is buying anything, because the economy is collapsing. That kind of
+              deflation is genuinely terrible.
             </p>
             <p>
-              But supply-side deflation — prices falling because things become
-              dramatically cheaper to produce — is a different animal entirely. It
-              is, in fact, the engine of almost all human economic progress. The
-              price of light has fallen by a factor of roughly one thousand over the
-              last two centuries. The price of computing power has halved roughly
-              every eighteen months for five decades. The price of sequencing a human
-              genome went from three billion dollars in 2003 to under two hundred
-              today. Every one of these was a deflationary event. Every one of them
-              made us, unambiguously, wealthier.
+              But supply-side deflation &mdash; prices falling because things
+              become dramatically cheaper to produce &mdash; is a completely
+              different machine. It is, in fact, the engine of almost all human
+              economic progress. The price of light has fallen by a factor of
+              roughly one thousand over two centuries. Computing power has halved in
+              cost every eighteen months for five decades. Sequencing a human genome
+              went from three billion dollars in 2003 to under two hundred today.
+              Every one of these was a deflationary event. Every one of them made
+              us, unambiguously, richer.
             </p>
           </Body>
 
@@ -245,7 +246,7 @@ export default function AbundanceThesisPage() {
           </Body>
 
           <PullQuote>
-            &ldquo;Supply-side deflation is not recession. It is civilisation accelerating.&rdquo;
+            &ldquo;Supply-side deflation is not recession. It is civilisation getting cheaper. Which is the same thing as getting richer.&rdquo;
           </PullQuote>
         </section>
 
@@ -260,24 +261,24 @@ export default function AbundanceThesisPage() {
             The End of the Knowledge Worker Class
           </SectionHeading>
           <Subheading>
-            And why that is liberation, not loss
+            The law firm is a factory. AI is closing factories.
           </Subheading>
 
           <Body>
             <p>
-              The knowledge economy, as it has existed for the last half century, is
-              built on a specific logic: that certain types of intellectual work
-              require enough specialisation, and enough collaboration, that they are
-              best performed by large groups of people employed under a single roof.
-              The law firm, the consulting firm, the investment bank — all of these
-              are factories for producing intellectual output.
+              The knowledge economy is built on a specific logic: certain types of
+              intellectual work require enough specialisation and collaboration that
+              they&rsquo;re best performed by large groups of people under a single
+              roof. The law firm, the consulting firm, the investment bank &mdash;
+              these are factories for producing intellectual output. I realise nobody
+              in a law firm wants to hear that, but it is.
             </p>
             <p>
-              AI dissolves the constraints that made those factories necessary. A
-              single person with capable AI tools can now research, synthesise,
-              model, design, write, and build at a level that previously required a
-              team. The constraint was never human intelligence — it was human time.
-              AI extends human time.
+              AI dissolves the constraints that made those factories necessary. One
+              person with capable AI tools can now research, synthesise, model,
+              design, write, and build at a level that previously required a team.
+              The constraint was never human intelligence. It was human time. AI
+              extends human time.
             </p>
             <p>
               What replaces the large knowledge-work employer is not unemployment. It
@@ -311,7 +312,7 @@ export default function AbundanceThesisPage() {
 
           <PullQuote>
             &ldquo;This is not the death of work. It is the death of unnecessary
-            organisational complexity around work.&rdquo;
+            organisational complexity around work. Which, frankly, was overdue.&rdquo;
           </PullQuote>
 
           <Body>
@@ -340,21 +341,20 @@ export default function AbundanceThesisPage() {
           <SectionLabel>Proposition Three</SectionLabel>
           <SectionHeading>The Blue Collar Premium</SectionHeading>
           <Subheading>
-            The most underanalysed consequence of AI is that it will make physical
-            work dramatically more valuable
+            Your plumber will earn more than your lawyer. And honestly, it&rsquo;s
+            about time.
           </Subheading>
 
           <Body>
             <p>
               AI cannot lay a floor. It cannot wire a house, fit a kitchen, service
               a boiler, fix a pipe, build a wall, or pour a concrete foundation.
-              These things require physical presence, physical dexterity, and
-              physical judgment that no current or near-future AI system can replace.
+              Your robot vacuum still gets stuck under the sofa. We are not close.
             </p>
             <p>
               But this framing misses the actually important point. The blue collar
               trades are not merely safe from AI displacement. They are positioned to
-              benefit enormously from it.
+              benefit enormously from it. And the mechanism is straightforward.
             </p>
             <p>
               Consider what happens when AI makes the rest of the economy run
@@ -385,8 +385,9 @@ export default function AbundanceThesisPage() {
           </ChartContainer>
 
           <PullQuote>
-            &ldquo;AI makes the system run faster. But the faster the system runs, the
-            more it demands the things AI cannot do.&rdquo;
+            &ldquo;AI makes the system run faster. But the faster the system runs,
+            the more it demands the things AI cannot do. That&rsquo;s not a bug.
+            That&rsquo;s basic economics.&rdquo;
           </PullQuote>
 
           <Body>
@@ -409,6 +410,29 @@ export default function AbundanceThesisPage() {
               Europe, Japan, all of which face shrinking working-age populations —
               autonomous vehicles are not punching a hole in the labour market. They
               are filling one that demographics had already started digging.
+            </p>
+            <p>
+              There is also a question the displacement narrative conveniently
+              ignores: who monitors the machines? The original version of this
+              thesis assumed a remote-operator ratio of roughly 1 to 250 — one
+              human overseeing 250 autonomous vehicles. That was wrong.
+              Waymo&apos;s own operation reveals the real number: 70 remote
+              assistance agents supervising a fleet of 3,000 vehicles across
+              four centres in Arizona, Michigan, and the Philippines. That is
+              one operator for every 41 cars — six times more human-intensive
+              than the optimistic projection. And these are not passive
+              observers. They handle blocked lanes, unexpected construction,
+              collisions, and regulatory interactions that the AI cannot
+              safely navigate alone. Even with 127 million autonomous miles
+              and a 90 per cent reduction in serious-injury crashes, the
+              system still leans on people for the messy, unpredictable edges
+              of driving that algorithms have not solved. Scale that ratio
+              across 2 billion vehicles globally and even at a conservative
+              1 in 100 — allowing for significant efficiency gains as the
+              technology matures — autonomous vehicles create roughly
+              20 million new remote-operator, fleet-management, and
+              maintenance jobs. The displacement is real. But so is the
+              creation, and it is far larger than anyone initially assumed.
             </p>
           </Body>
 
@@ -525,43 +549,43 @@ export default function AbundanceThesisPage() {
           <Body>
             <p>
               There is a kind of intellectual comfort in pessimism about technology.
-              It positions you as a serious person — someone who has not been taken
-              in by the hype, who is alert to the downsides, who refuses to drink the
-              Kool-Aid. Technophobia can feel like sophistication.
+              It positions you as a serious person &mdash; someone who has not been
+              taken in by the hype, who is alert to the downsides, who refuses to
+              drink the Kool-Aid. At dinner parties, technophobia passes for
+              sophistication. I know this because I was doing it.
             </p>
             <p>
-              I understand this. I felt it. Eighteen months ago, I looked at what AI
-              was doing to knowledge work and I thought: this is going to be brutal.
-              And I was not wrong that it will be disruptive, or that the disruption
-              will be unevenly distributed, or that some people will be genuinely
-              hurt by the transition.
+              Eighteen months ago I looked at what AI was doing to knowledge work
+              and thought: this is going to be brutal. And I was not wrong that
+              it will be disruptive, or that the disruption will be unevenly
+              distributed, or that some people will be genuinely hurt by the
+              transition.
             </p>
             <p>
               But I was wrong to let the first-order effects be the last word. A
               technology that makes professional services affordable to everyone is
-              not a tool of dispossession. A shift from large employers to autonomous
-              individual operators is not impoverishment — it is, for many people, a
-              form of freedom they never had access to under the existing model. And
-              a premium on physical, human-present work — in a world where so much
-              else has been automated — is not a consolation prize. It is a
-              revaluation, long overdue, of what is actually scarce and therefore
-              valuable.
+              not a tool of dispossession. A shift from large employers to solo
+              operators is not impoverishment &mdash; it is, for many people, a
+              form of freedom they never had access to. And a premium on physical,
+              human-present work &mdash; in a world where so much else has been
+              automated &mdash; is not a consolation prize. It is a revaluation,
+              long overdue, of what is actually scarce.
             </p>
             <p>
-              The structural logic — deflation, autonomous work, the blue collar
-              premium — is sound. The direction of travel, for a society willing to
-              navigate the transition intelligently, is toward more abundance, not
-              less. More choice, not less. More humanity in work, not less.
+              The structural logic &mdash; deflation, autonomous work, the blue
+              collar premium &mdash; is sound. The direction of travel is toward
+              more abundance, not less. More choice, not less. More humanity in
+              work, not less.
             </p>
             <p>
               That is what changed my mind. Not blind faith in technology, but the
-              discipline of following the argument wherever it leads.
+              discipline of following the maths wherever it leads.
             </p>
           </Body>
 
           <PullQuote>
             &ldquo;The optimist&rsquo;s position on AI is not naive. It is the one
-            that has done the work.&rdquo;
+            that did the maths.&rdquo;
           </PullQuote>
         </section>
 

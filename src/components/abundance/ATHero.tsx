@@ -43,10 +43,9 @@ export default function ATHero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.1 }}
         >
-          &ldquo;Eighteen months ago, I was more pessimistic about all of this.
-          What changed my mind wasn&rsquo;t wishful thinking — it was following
-          the second and third-order effects further than most people bother to.
-          This is that argument.&rdquo;
+          &ldquo;I got this wrong at first. Completely wrong. Then I followed the
+          second and third-order effects further than most people bother to,
+          and the picture flipped entirely. This is that argument.&rdquo;
         </motion.p>
 
         {/* Reading time */}
