@@ -154,14 +154,14 @@ export default function EmpireOnTheEdgePage() {
         {/* ─────────────────────────────────────────────────── */}
         <section id="where-we-left-off" className="pt-8">
           <SectionLabel>01 &middot; Where We Left Off</SectionLabel>
-          <SectionHeading>In 2020, I Called the Everything Bubble</SectionHeading>
+          <SectionHeading>In 2020, I Made Three Predictions</SectionHeading>
 
           <Body>
             <p>
-              In 2020, during COVID, I wrote a paper called The Great Reset. It was not about conspiracy theories. It was a structural argument about what happens when an empire reaches the late stage of a long-term debt cycle &mdash; when the money printer has been running for decades, when wealth concentration reaches historically dangerous levels, and when the gap between financial assets and productive capacity becomes so wide that the whole system starts to wobble.
+              In 2020, during COVID, I wrote a paper called The Great Reset. Not the conspiracy theory &mdash; a structural argument about what happens when an empire reaches the late stage of a long-term debt cycle. When the money printer has been running for decades. When wealth concentration hits historically dangerous levels. When the gap between financial assets and productive capacity becomes so wide that the whole machine starts to wobble.
             </p>
             <p>
-              That paper made a series of predictions. Some were right. Some were wrong. And the distinction between the two is the most important thing to understand before reading this one.
+              That paper made three predictions. Two were right. One was spectacularly wrong. And the distinction between them is the most important thing to understand before reading this one.
             </p>
           </Body>
 
@@ -216,13 +216,13 @@ export default function EmpireOnTheEdgePage() {
 
           <Body>
             <p>
-              The 2020 paper implied that the transition would be faster than it has been. I underestimated the system&rsquo;s ability to absorb shocks and keep going. The US printed $4.5 trillion during COVID and the dollar didn&rsquo;t collapse. It strengthened. The Federal Reserve raised interest rates at the fastest pace in modern history and the economy didn&rsquo;t break. It slowed, but it held.
+              Here&rsquo;s where I was wrong. I implied the transition would be faster than it has been. I underestimated the system&rsquo;s ability to absorb punishment and keep going. The US printed $4.5 trillion during COVID and the dollar didn&rsquo;t collapse. It strengthened. The Fed raised rates at the fastest pace in modern history and the economy didn&rsquo;t break. It slowed, but it held. Which, frankly, I did not expect.
             </p>
             <p>
-              This is not because the structural argument was wrong. It is because these transitions take 10&ndash;30 years, not 2&ndash;5. The decline of the British pound as the world&rsquo;s reserve currency took roughly 30 years &mdash; from the aftermath of World War I to the formal establishment of the Bretton Woods system in 1944. Even then, sterling remained in use for international trade well into the 1960s. These are slow processes.
+              But the structural argument wasn&rsquo;t wrong. The timing was. These transitions take 10&ndash;30 years, not 2&ndash;5. The decline of sterling as the world&rsquo;s reserve currency took roughly 30 years. Even after Bretton Woods in 1944, it remained in use for international trade well into the 1960s. Empires don&rsquo;t fall. They erode.
             </p>
             <p>
-              What COVID did was accelerate the timeline. It did not resolve it. It cracked the surface. Ukraine cracked it further. The Middle East cracked it further still. Taiwan, when it comes, will crack it wide open.
+              COVID cracked the surface. Ukraine cracked it further. The Middle East cracked it further still. Taiwan, when it comes, will crack it wide open.
             </p>
           </Body>
 
@@ -274,10 +274,10 @@ export default function EmpireOnTheEdgePage() {
 
           <Body>
             <p>
-              The dollar&rsquo;s reserve currency status is not a footnote. It is the single most important structural advantage the United States possesses. It is the reason the US can run deficits that would bankrupt any other country. It is the reason the US can print trillions of dollars without triggering hyperinflation. It is the reason the US military can operate at a scale that no other nation can afford.
+              The dollar&rsquo;s reserve currency status is not a footnote. It is the single most important structural advantage the United States possesses. Full stop. It is the reason the US can run deficits that would bankrupt any other country. The reason it can print trillions without triggering hyperinflation. The reason its military operates at a scale nobody else can afford. Remove this one advantage and the entire machine seizes.
             </p>
             <p>
-              Understand this, and you understand every war since 2001. Understand what threatens it, and you understand every war that is coming.
+              Understand this one fact, and you understand every war since 2001. Understand what threatens it, and you understand every war that is coming.
             </p>
           </Body>
 
@@ -293,13 +293,13 @@ export default function EmpireOnTheEdgePage() {
 
           <Body>
             <p>
-              The British Empire did it. The Spanish Empire did it. The Ottoman Empire did it. Every dominant power in history has followed the same arc: rise through productive advantage, consolidation through military and financial dominance, and decline through overextension, debt, and the gradual erosion of the currency that underwrote the whole system. The mechanism varies &mdash; the Spanish had gold mines, the British had the pound and the City of London, the Americans have the printing press and the petrodollar &mdash; but the pattern is identical.
+              This has happened before. Five times, in fact. The British Empire did it. The Spanish Empire did it. The Ottoman Empire did it. The Dutch did it. The Romans did it. The pattern is always the same: rise through productive advantage, consolidation through military and financial dominance, decline through overextension, debt, and the slow erosion of the currency that underwrote the whole system. The mechanism varies. The pattern is identical.
             </p>
             <p>
-              The US version of this pattern is built on a specific piece of financial architecture: the petrodollar system. In 1974, Henry Kissinger struck a deal with Saudi Arabia. The Saudis would price all oil in US dollars. In return, the US would guarantee Saudi security. Every country that wanted to buy oil &mdash; which is every country &mdash; needed dollars. This created permanent global demand for the currency, which allowed the US to print far more of it than its domestic economy justified.
+              The US version runs on one specific piece of financial architecture: the petrodollar. In 1974, Henry Kissinger struck a deal with Saudi Arabia. The Saudis would price all oil in dollars. In return, the US would guarantee their security. Every country that wanted oil &mdash; which is every country &mdash; needed dollars. This created permanent global demand for the currency, which allowed America to print far more of it than its domestic economy justified. The entire global financial system runs on a handshake deal from 1974. Let that sink in.
             </p>
             <p>
-              Every serious threat to the petrodollar has been met with force. Saddam Hussein announced in 2000 that Iraq would price its oil in euros. He was removed from power three years later. Muammar Gaddafi proposed a gold-backed African currency for oil trading. He was killed. Russia began demanding payment in roubles for gas exports. It was sanctioned and its reserves frozen.
+              And every serious threat to this arrangement has been met with force. Saddam Hussein announced in 2000 that Iraq would price oil in euros. He was removed from power three years later. Gaddafi proposed a gold-backed African currency for oil trading. He was killed. Russia demanded roubles for gas. It was sanctioned and its reserves frozen. You can draw your own conclusions about the pattern.
             </p>
           </Body>
 
@@ -612,7 +612,7 @@ export default function EmpireOnTheEdgePage() {
               I have an allotment. I love it. I grow vegetables, drink tea, and argue with my neighbour about compost. It is one of the great pleasures of English life. But getting it took two years on a waiting list, and if I wanted to build a small shed on it, I would need planning permission &mdash; a process that can take six months and involves submitting drawings to a council office that is open three days a week.
             </p>
             <p>
-              This is a trivial example. But it is a civilisational signal. A country that cannot build a shed without a six-month approval process is not a country that is going to win a technology race against one that can build a nuclear power station in five years.
+              Two years to get an allotment. Six months to get permission for a shed. In the time it takes to approve my shed, China builds a nuclear reactor. That is not a trivial observation. It is a civilisational signal.
             </p>
             <p>
               The planning and regulatory architecture of the Western world &mdash; the United States, the United Kingdom, and Europe &mdash; has metastasised over the last fifty years into something that was never intended: a system so encrusted with process, consultation, legal challenge, and bureaucratic risk-aversion that it has become structurally incapable of building things at the speed the current moment demands.
@@ -810,10 +810,10 @@ export default function EmpireOnTheEdgePage() {
 
           <Body>
             <p>
-              Every element of the late-cycle pattern is now visible. The debt is unsustainable. The currency is under structural pressure. The wars are multiplying. The alliances are shifting. The challengers are rising. The domestic political systems are paralysed by polarisation and process. The task is not prediction &mdash; it is understanding the sequence.
+              Every element of the late-cycle pattern is now visible. The debt is unsustainable. The currency is under structural pressure. The wars are multiplying. The alliances are shifting. The challengers are building. The domestic political systems are paralysed by polarisation and process. The task is not prediction. It is pattern recognition.
             </p>
             <p>
-              The US will not collapse. It remains the most powerful economy on earth, with the deepest capital markets, the best universities, and the most innovative technology sector. But the dollar will not retain its current dominance. The financial architecture of the post-war order is being rebuilt in real time. The question is not whether this transition happens, but how fast, how disorderly, and who positions themselves correctly for it.
+              The US will not collapse. It remains the most powerful economy on earth, with the deepest capital markets, the best universities, and the most innovative technology sector. But the dollar will not retain its current dominance. The financial architecture of the post-war order is being rebuilt in real time &mdash; by people who are not asking permission and not sending press releases. The question is not whether this transition happens. It is how fast, how messy, and who positions themselves correctly for it.
             </p>
           </Body>
 
