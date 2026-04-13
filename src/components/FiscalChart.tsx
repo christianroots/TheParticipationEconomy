@@ -14,14 +14,14 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 
-// Fiscal model: Government match cost vs tax revenue streams
-// Revenue: death tax (20%), CGT on drawdowns (18% blended), dividend tax (12% blended)
-// Cost: 3% government match on all active workers' spending
+// Fiscal model: Government tax revenue from citizen portfolios (zero cost to government)
+// Revenue: death tax (30%), CGT on drawdowns (18% blended), dividend tax (12% blended)
+// Cost: £0 — government creates mechanism only, no match
 const fiscal = (() => {
   const baseSpend = 27300;
   const wageInflation = 0.03;
-  const contributionRate = 0.06;
-  const govMatchRate = 0.03;
+  const contributionRate = 0.03;
+  const govMatchRate = 0.0; // No government match
   const accReturn = 0.08;
   const retReturn = 0.06;
   const drawdownRate = 0.05;

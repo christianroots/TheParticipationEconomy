@@ -9,7 +9,7 @@ const theses = [
     title: "The Participation Economy",
     subtitle: "Turning Consumption Into Ownership",
     description:
-      "A framework for rebuilding capital ownership in modern market societies. What if a small fraction of what you already spend automatically bought you a tiny piece of the economy?",
+      "You\u2019ll earn roughly \u00A32 million in your lifetime. You\u2019ll spend almost all of it. You\u2019ll own almost none of what it built. This paper argues that\u2019s a design flaw \u2014 and offers a mechanical fix.",
     href: "/participation-economy",
     year: "2025",
     readTime: "25 min",
@@ -17,9 +17,9 @@ const theses = [
   {
     number: "II",
     title: "The Abundance Thesis",
-    subtitle: "Why AI Will Make the World Richer, Freer, and More Human Than We Feared",
+    subtitle: "Why AI Will Make the World Richer, Not Poorer",
     description:
-      "Three propositions that form a chain of causation: the great deflation, the end of the knowledge worker class, and the blue collar premium. Together, they paint a picture that is quietly extraordinary.",
+      "Everyone assumes AI destroys jobs. I did too. Then I followed the second and third-order effects and the picture flipped completely. Three propositions. One chain of causation. A conclusion that is, quietly, extraordinary.",
     href: "/abundance-thesis",
     year: "2026",
     readTime: "20 min",
@@ -29,7 +29,7 @@ const theses = [
     title: "Empire on the Edge",
     subtitle: "How the World\u2019s Last Superpower Is Fighting Five Wars at Once",
     description:
-      "A geopolitical and financial thesis. The sequel to The Great Reset (2020). Debt, energy, war, and the slow erosion of the dollar system \u2014 told through the data.",
+      "In 2020 I wrote that the dollar would weaken, central banks would buy gold, and US debt would become unsustainable. All three happened. This is the sequel \u2014 and the picture has got worse.",
     href: "/empire-on-the-edge",
     year: "2025",
     readTime: "35 min",
@@ -47,7 +47,7 @@ export default function Hub() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          Written by Christian Samuel
+          Christian Samuel
         </motion.p>
         <motion.h1
           className="text-5xl md:text-7xl lg:text-8xl font-playfair text-text text-center leading-[1.05] tracking-tight"
@@ -63,7 +63,7 @@ export default function Hub() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          Long-form theses on economics, technology, and the future
+          Three theses. Uncomfortable conclusions. All the data.
         </motion.p>
 
         {/* Scroll cue */}

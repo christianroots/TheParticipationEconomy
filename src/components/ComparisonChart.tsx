@@ -20,10 +20,10 @@ import { motion } from "framer-motion";
 //   Home equity (if they can buy): ~£300k — but many can't
 //   Average UK wealth at retirement: ~£300-500k (heavily skewed by property)
 //
-// Participation Economy: same person, same spending
-//   Portfolio value at 68: ~£2.5M
-//   Housing equity: ~£339k (additional to any home ownership)
-//   Total: ~£2.85M
+// Participation Economy: same person, same spending (3% citizen only, no gov match)
+//   Portfolio value at 68: ~£1.1M
+//   Housing equity: ~£170k (additional to any home ownership)
+//   Total: ~£1.27M additional
 const data = [
   {
     category: "Pension",
@@ -43,12 +43,12 @@ const data = [
   {
     category: "Portfolio",
     current: 0,
-    participation: 2535,
+    participation: 1170,
   },
   {
     category: "Housing",
     current: 0,
-    participation: 339,
+    participation: 170,
   },
 ];
 

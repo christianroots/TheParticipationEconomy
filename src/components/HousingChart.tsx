@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 
 // Housing-specific 50-year model (age 18 to 68)
 // Rent: £1,200/month = £14,400/yr — grows at 3.5% rental inflation
-// Housing contribution: 6% of rent (3% citizen + 3% gov match)
+// Housing contribution: 3% of rent (citizen only — no gov match)
 // Housing asset appreciation: 5% nominal (long-run UK housing)
 // Citizen owns the equity AND benefits from capital appreciation
 const data = (() => {
@@ -24,7 +24,7 @@ const data = (() => {
   let equity = 0;
   const baseRent = 14400;
   const rentInflation = 0.035;
-  const contributionRate = 0.06;
+  const contributionRate = 0.03;
   const housingAppreciation = 0.05;
 
   for (let year = 0; year <= 50; year++) {

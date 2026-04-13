@@ -14,14 +14,14 @@ import { motion } from "framer-motion";
 
 // National 50-year cohort model with lifecycle sell-down and death tax
 // Per-person spend: ~£27.3k (UK household spend £900B / ~33M workers)
-// 6% total rate (3% citizen + 3% gov match)
+// 3% total rate (citizen only — no government match)
 // Accumulation phase (age 18-68): 8% blended nominal return
 // Drawdown phase (age 68-81): 5% annual withdrawal, 6% conservative return
 // Death at 81: 30% to state (participation tax), 70% to heirs (exits system)
 const computed = (() => {
   const baseSpend = 27300;
   const wageInflation = 0.03;
-  const contributionRate = 0.06;
+  const contributionRate = 0.03;
   const accReturn = 0.08;
   const retReturn = 0.06;
   const drawdownRate = 0.05;

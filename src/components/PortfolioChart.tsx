@@ -14,14 +14,14 @@ import { motion } from "framer-motion";
 
 // 50-year model — one full working generation (age 18 to 68)
 // Base spend: £46,000/yr — grows at 3% wage inflation
-// Total contribution rate: 6% (3% citizen + 3% government match)
+// Total contribution rate: 3% (citizen only — no government match)
 // Blended portfolio return: 8% nominal (equities ~10%, infra ~6%, PE ~12%, VC ~15%)
 // All figures nominal (i.e. include inflation effects on wages, assets, and returns)
 const data = (() => {
   const points = [];
   let portfolio = 0;
   const baseSpend = 46000;
-  const contributionRate = 0.06;
+  const contributionRate = 0.03;
   const wageInflation = 0.03;
   const nominalReturn = 0.08;
 
