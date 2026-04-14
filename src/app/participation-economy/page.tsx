@@ -393,10 +393,10 @@ export default function Home() {
 
           <BodyText>
             <p>
-              To understand why the government&rsquo;s commitment matters, work
-              it backwards from the average citizen. The average UK adult is 40.
-              That&rsquo;s 28 years until retirement at 68, and death at roughly
-              81. Here&rsquo;s what the timeline actually looks like:
+              To understand why the handover works, work it backwards from the
+              average citizen. The average UK adult is 40. That&rsquo;s 28
+              years until retirement at 68, and death at roughly 81.
+              Here&rsquo;s what the timeline actually looks like:
             </p>
           </BodyText>
 
@@ -426,87 +426,123 @@ export default function Home() {
                 CGT revenue grows meaningfully.
               </p>
               <p>
-                <strong>Year 30:</strong> Reinvestment period ends. By now the
-                first full-career cohorts are retiring with large portfolios,
-                and earlier retirees are dying with meaningful balances.
-                The death tax is generating real money.
+                <strong>Year 30:</strong> Full reinvestment period ends.
+                The 50/50 transition begins &mdash; half the tax still
+                reinvests into citizen portfolios, half starts flowing to
+                the Treasury. The fund keeps accelerating, the government
+                starts earning.
               </p>
               <p>
                 <strong>Year 41:</strong> Average citizen dies at 81. Their
                 portfolio had 28 years of accumulation plus 13 years of
-                drawdown. 30% of the remaining balance returns to the Treasury.
+                drawdown. 30% of the remaining balance goes to tax &mdash;
+                half reinvested, half to the Treasury under the transition rules.
               </p>
               <p>
                 <strong>Year 50:</strong> Scheme is mature. The 18-year-olds
                 from launch day are now 68 with full 50-year portfolios.
-                The tax revenue is enormous.
+                The transition period ends. From year 51, the government
+                collects 100% of tax revenue.
               </p>
             </div>
           </div>
 
           <BodyText>
             <p>
-              This is why the thirty-year reinvestment period isn&rsquo;t
-              generosity. It&rsquo;s arithmetic. For the first decade, portfolios
-              are small and nobody can draw down &mdash; the tax revenue is
-              negligible. By year twenty, people are drawing down but the big
-              portfolios haven&rsquo;t matured yet. The death tax only becomes a
-              serious revenue stream around year thirty, when citizens who had
-              20&ndash;30 years of accumulation start dying.
+              This is why the reinvestment period isn&rsquo;t generosity.
+              It&rsquo;s arithmetic. For the first decade, portfolios are
+              small and nobody can draw down &mdash; the tax revenue is
+              negligible anyway. By year twenty, people are drawing down but
+              the big portfolios haven&rsquo;t matured yet. The death tax
+              only becomes a serious revenue stream around year thirty, when
+              citizens who had 20&ndash;30 years of accumulation start dying.
             </p>
             <p>
-              So the government commits to reinvesting every penny of CGT, death
-              tax, and dividend tax back into the citizen fund for thirty years.
-              Not because it&rsquo;s being generous. Because for most of that
-              period, there isn&rsquo;t much to collect anyway &mdash; and what
-              there is compounds far more powerfully inside the fund than it
-              would sitting in the Treasury&rsquo;s current account.
+              So the government commits to a three-phase handover. For the
+              first thirty years, every penny of CGT, death tax, and dividend
+              tax goes straight back into the citizen fund. For years thirty
+              to fifty, it&rsquo;s a 50/50 split &mdash; half still compounds
+              inside the fund, half finally starts flowing to the Treasury.
+              From year fifty onwards, the government collects the full amount.
+              A twenty-year transition period that lets the fund keep
+              accelerating while giving the state a growing, reliable revenue
+              stream.
             </p>
             <p>
               That is the government&rsquo;s contribution. Not a cash handout.
-              Not a line item on the budget. A thirty-year commitment to forgo
-              modest early tax revenue and let it compound. The state is saying:
-              we&rsquo;ll take our cut later, when the fund is enormous, and our
-              share of it is worth the patience.
+              Not a line item on the budget. A fifty-year discipline: full
+              reinvestment for thirty years, partial reinvestment for twenty
+              more. The state is saying: we&rsquo;ll take our full cut later,
+              when the fund is enormous.
             </p>
           </BodyText>
 
           <div className="my-8 p-6 bg-pull-bg rounded-lg border border-green-200">
             <p className="font-sans text-sm font-semibold text-primary uppercase tracking-wider mb-2">
-              The 30-Year Reinvestment Commitment
+              How the Reinvested Tax Is Distributed
             </p>
             <p className="font-serif text-[16px] leading-[1.7] text-text">
-              <strong>Years 1&ndash;30:</strong> All CGT, death tax, and
-              dividend tax from participation portfolios is reinvested into
-              the citizen fund. The government forgoes this revenue &mdash;
-              that&rsquo;s its investment. <strong>Year 31 onwards:</strong> The
-              government begins collecting. By now the fund is so large that
-              the annual tax take dwarfs what any traditional match programme
-              could have generated.
+              When tax revenue is reinvested back into the fund, it
+              doesn&rsquo;t disappear into a central pot. It&rsquo;s
+              distributed to every active citizen &mdash; weighted by their
+              share of total contributions to date. Put in 3% of the national
+              total this year? You get 3% of the reinvested tax dividend.
+              Every citizen sees the government&rsquo;s commitment show up
+              directly in their own portfolio. It&rsquo;s not an abstract
+              fund benefit. It&rsquo;s a line item on your statement: &ldquo;Government
+              reinvestment dividend: &pound;X.&rdquo;
             </p>
+          </div>
+
+          <div className="my-8 p-6 bg-pull-bg rounded-lg border border-green-200">
+            <p className="font-sans text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+              The Three-Phase Handover
+            </p>
+            <div className="space-y-2 font-serif text-[15px] leading-[1.7] text-text">
+              <p>
+                <strong>Phase One &mdash; Years 1&ndash;30 (Full Reinvestment):</strong>{" "}
+                100% of CGT, death tax, and dividend tax is distributed back
+                to citizens based on their contribution share. Government
+                collects nothing.
+              </p>
+              <p>
+                <strong>Phase Two &mdash; Years 31&ndash;50 (Transition):</strong>{" "}
+                50/50 split. Half continues reinvesting into citizen portfolios.
+                Half flows to the Treasury. The government starts receiving
+                real revenue while the fund keeps accelerating.
+              </p>
+              <p>
+                <strong>Phase Three &mdash; Year 51+ (Full Collection):</strong>{" "}
+                Government collects 100% of tax revenue. By this point the
+                fund is mature, the portfolios are at scale, and the annual
+                tax take dwarfs anything a traditional match programme could
+                have generated.
+              </p>
+            </div>
           </div>
 
           <PullQuote>
             The government&rsquo;s contribution isn&rsquo;t cash. It&rsquo;s
-            patience. Thirty years of reinvested tax revenue, compounding
-            inside the fund. That&rsquo;s not doing nothing. That&rsquo;s
-            the most disciplined investment any Treasury has ever made.
+            patience. Fifty years of disciplined reinvestment, compounding
+            inside the fund, distributed directly to citizens based on what
+            they put in. That&rsquo;s not doing nothing. That&rsquo;s the
+            most disciplined investment any Treasury has ever made.
           </PullQuote>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
             <StatCallout
-              number="30 yrs"
-              description="Government reinvests all tax revenue back into the fund"
+              number="100%"
+              description="Tax reinvested into citizens for first 30 years"
               delay={0}
             />
             <StatCallout
-              number="&pound;0"
-              description="Cost from existing Treasury budgets"
+              number="50/50"
+              description="Split for years 31&ndash;50 (transition)"
               delay={0.15}
             />
             <StatCallout
-              number="&pound;100B+"
-              description="Annual tax revenue from year 31 onwards"
+              number="Year 51+"
+              description="Government collects 100% of tax revenue"
               delay={0.3}
             />
           </div>

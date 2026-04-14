@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import {
-  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -16,10 +15,11 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 
-// Fiscal model: 30-year reinvestment then collection
+// Fiscal model: 30-year full reinvestment, then 20-year 50/50 split, then full collection
 // Years 1-10: Only dividend tax (10yr lock = no CGT drawdowns). Death tax minimal.
-// Years 1-30: ALL tax revenue reinvested back into citizen fund (government's contribution)
-// Years 31+: Government begins collecting tax revenue
+// Years 1-30: 100% of tax revenue reinvested back into citizen fund
+// Years 31-50: 50% reinvested, 50% collected by government (transition period)
+// Years 51+: 100% collected by government (outside chart range)
 const fiscal = (() => {
   const baseSpend = 27300;
   const wageInflation = 0.03;
@@ -34,7 +34,8 @@ const fiscal = (() => {
   const dividendTaxRate = 0.12;
   const equityPortion = 0.50;
   const lockYears = 10;
-  const reinvestYears = 30;
+  const fullReinvestYears = 30;
+  const transitionEndYear = 50;
 
   // Pre-compute individual portfolio accumulation (years 0-50)
   const acc: number[] = [0];
@@ -118,9 +119,17 @@ const fiscal = (() => {
     const yrDiv = totalCap * equityPortion * dividendYield * dividendTaxRate;
     const yrTotalTax = yrDT + yrCGT + yrDiv;
 
-    // Years 1-30: reinvested. Years 31+: collected.
-    const reinvested = Y <= reinvestYears ? yrTotalTax : 0;
-    const collected = Y > reinvestYears ? yrTotalTax : 0;
+    // Years 1-30: 100% reinvested. Years 31-50: 50/50 split. Year 51+: 100% collected.
+    let reinvested = 0;
+    let collected = 0;
+    if (Y <= fullReinvestYears) {
+      reinvested = yrTotalTax;
+    } else if (Y <= transitionEndYear) {
+      reinvested = yrTotalTax * 0.5;
+      collected = yrTotalTax * 0.5;
+    } else {
+      collected = yrTotalTax;
+    }
 
     cumReinvested += reinvested;
     cumCollected += collected;
@@ -187,8 +196,7 @@ export default function FiscalChart() {
         Government Reinvestment &amp; Collection
       </h3>
       <p className="font-sans text-[11px] text-muted text-center mb-6">
-        Years 1&ndash;30: all tax revenue reinvested into citizen fund &middot;
-        Year 31+: government collects
+        Years 1&ndash;30: 100% reinvested &middot; Years 31&ndash;50: 50% reinvested, 50% collected &middot; Year 51+: 100% collected
       </p>
       <div className="h-[350px] w-full">
         {isVisible && (
@@ -252,25 +260,11 @@ export default function FiscalChart() {
                 }}
                 formatter={(value) =>
                   value === "reinvested"
-                    ? "Gov Reinvestment (Yrs 1\u201330)"
+                    ? "Reinvested into Fund"
                     : value === "collected"
-                    ? "Gov Revenue Collected (Yr 31+)"
+                    ? "Collected by Government"
                     : "Total Tax Generated"
                 }
-              />
-              <ReferenceLine
-                x={30}
-                stroke="#E8A020"
-                strokeDasharray="4 4"
-                label={{
-                  value: "Reinvestment ends \u2192 Collection begins",
-                  position: "top",
-                  style: {
-                    fontFamily: "Inter, system-ui, sans-serif",
-                    fontSize: 10,
-                    fill: "#E8A020",
-                  },
-                }}
               />
               <ReferenceLine
                 x={10}
@@ -283,6 +277,20 @@ export default function FiscalChart() {
                     fontFamily: "Inter, system-ui, sans-serif",
                     fontSize: 10,
                     fill: "#9CA3AF",
+                  },
+                }}
+              />
+              <ReferenceLine
+                x={30}
+                stroke="#E8A020"
+                strokeDasharray="4 4"
+                label={{
+                  value: "50/50 transition begins",
+                  position: "top",
+                  style: {
+                    fontFamily: "Inter, system-ui, sans-serif",
+                    fontSize: 10,
+                    fill: "#E8A020",
                   },
                 }}
               />
@@ -315,7 +323,7 @@ export default function FiscalChart() {
       {/* Revenue breakdown at Year 50 */}
       <div className="mt-8 mb-4">
         <h4 className="font-sans text-[11px] font-semibold uppercase tracking-wider text-muted text-center mb-4">
-          Annual Revenue at Year 50 (Government Collects)
+          Total Tax Generated at Year 50 (50% Reinvested / 50% Collected)
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           <motion.div
@@ -377,7 +385,7 @@ export default function FiscalChart() {
             {formatValue(fiscal.cumReinvested)}
           </p>
           <p className="font-sans text-[11px] text-muted mt-1">
-            Total reinvested by government (Yrs 1&ndash;30)
+            Total reinvested by government (Yrs 1&ndash;50)
           </p>
         </motion.div>
         <motion.div
@@ -402,10 +410,10 @@ export default function FiscalChart() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="font-sans text-2xl md:text-3xl font-bold text-green-700">
-            Year 31
+            Year 31&ndash;50
           </p>
           <p className="font-sans text-[11px] text-muted mt-1">
-            Government begins collecting
+            50/50 split: gov collects half, reinvests half
           </p>
         </motion.div>
       </div>
