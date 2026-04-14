@@ -11,17 +11,19 @@ import {
   ResponsiveContainer,
   Legend,
   ReferenceLine,
+  Area,
+  ComposedChart,
 } from "recharts";
 import { motion } from "framer-motion";
 
-// Fiscal model: Government tax revenue from citizen portfolios (zero cost to government)
-// Revenue: death tax (30%), CGT on drawdowns (18% blended), dividend tax (12% blended)
-// Cost: £0 — government creates mechanism only, no match
+// Fiscal model: 30-year reinvestment then collection
+// Years 1-10: Only dividend tax (10yr lock = no CGT drawdowns). Death tax minimal.
+// Years 1-30: ALL tax revenue reinvested back into citizen fund (government's contribution)
+// Years 31+: Government begins collecting tax revenue
 const fiscal = (() => {
   const baseSpend = 27300;
   const wageInflation = 0.03;
   const contributionRate = 0.03;
-  const govMatchRate = 0.0; // No government match
   const accReturn = 0.08;
   const retReturn = 0.06;
   const drawdownRate = 0.05;
@@ -31,9 +33,12 @@ const fiscal = (() => {
   const dividendYield = 0.035;
   const dividendTaxRate = 0.12;
   const equityPortion = 0.50;
+  const lockYears = 10;
+  const reinvestYears = 30;
 
+  // Pre-compute individual portfolio accumulation (years 0-50)
   const acc: number[] = [0];
-  const cb: number[] = [0];
+  const cb: number[] = [0]; // cost basis
   for (let y = 1; y <= 50; y++) {
     const spend = baseSpend * Math.pow(1 + wageInflation, y);
     const contribution = spend * contributionRate;
@@ -45,26 +50,24 @@ const fiscal = (() => {
 
   const points: Array<{
     year: number;
-    matchCost: number;
-    revenue: number;
-    deathTax: number;
-    cgt: number;
-    divTax: number;
+    reinvested: number;    // Tax revenue reinvested into fund (years 1-30)
+    collected: number;     // Tax revenue government keeps (years 31+)
+    totalTaxGenerated: number; // Total tax generated (for reference)
   }> = [];
 
-  let yr50Match = 0;
-  let yr50Rev = 0;
+  let cumReinvested = 0;
+  let cumCollected = 0;
+  let yr50Tax = 0;
   let yr50DT = 0;
   let yr50CGT = 0;
   let yr50Div = 0;
-  let breakeven = 0;
 
   for (let Y = 0; Y <= 50; Y++) {
     let totalCap = 0;
     let yrDT = 0;
-    let yrMatch = 0;
     let yrGains = 0;
 
+    // Existing cohorts at scheme start (ages 18-68)
     for (let A = 18; A <= 68; A++) {
       const maxAcc = 68 - A;
       const lifespan = 81 - A;
@@ -72,65 +75,67 @@ const fiscal = (() => {
 
       if (Y <= maxAcc) {
         totalCap += cohortSize * acc[Y];
-        yrMatch +=
-          cohortSize *
-          baseSpend *
-          Math.pow(1 + wageInflation, Y) *
-          govMatchRate;
       } else {
         const retVal = acc[maxAcc];
         if (retVal > 0) {
-          const cur = retVal * Math.pow(dMult, Y - maxAcc);
+          const retYears = Y - maxAcc;
+          const cur = retVal * Math.pow(dMult, retYears);
           totalCap += cohortSize * cur;
-          const gainRatio = Math.max(0, 1 - cb[maxAcc] / retVal);
-          yrGains += cohortSize * cur * drawdownRate * gainRatio;
+          // CGT only after 10-year lock — drawdowns start at retirement (year maxAcc)
+          // but the individual must have been in the scheme for 10+ years
+          if (Y >= lockYears) {
+            const gainRatio = Math.max(0, 1 - cb[maxAcc] / retVal);
+            yrGains += cohortSize * cur * drawdownRate * gainRatio;
+          }
         }
       }
 
-      if (Y === lifespan && acc[maxAcc] > 0) {
-        yrDT += cohortSize * acc[maxAcc] * Math.pow(dMult, 13) * deathTaxRate;
+      // Death tax — only when someone dies AND has had time to accumulate
+      if (Y === lifespan && maxAcc >= 5 && acc[maxAcc] > 0) {
+        const retYears = lifespan - maxAcc;
+        yrDT += cohortSize * acc[maxAcc] * Math.pow(dMult, retYears) * deathTaxRate;
       }
     }
 
+    // New cohorts entering after scheme starts
     for (let E = 1; E <= Y; E++) {
-      const yrs = Y - E;
+      const yrs = Y - E; // years this cohort has been in
       if (yrs <= 50) {
         totalCap += cohortSize * acc[yrs];
-        yrMatch +=
-          cohortSize *
-          baseSpend *
-          Math.pow(1 + wageInflation, yrs) *
-          govMatchRate;
       } else if (yrs <= 63) {
         const cur = acc[50] * Math.pow(dMult, yrs - 50);
         totalCap += cohortSize * cur;
-        const gainRatio = Math.max(0, 1 - cb[50] / acc[50]);
-        yrGains += cohortSize * cur * drawdownRate * gainRatio;
+        // CGT only after 10-year lock
+        if (yrs >= lockYears && yrs > 50) {
+          const gainRatio = Math.max(0, 1 - cb[50] / acc[50]);
+          yrGains += cohortSize * cur * drawdownRate * gainRatio;
+        }
       }
     }
 
     const yrCGT = yrGains * cgtRate;
+    // Dividend tax: only on portfolios that exist
     const yrDiv = totalCap * equityPortion * dividendYield * dividendTaxRate;
-    const yrRev = yrDT + yrCGT + yrDiv;
+    const yrTotalTax = yrDT + yrCGT + yrDiv;
 
-    if (breakeven === 0 && yrRev >= yrMatch && Y > 0) {
-      breakeven = Y;
-    }
+    // Years 1-30: reinvested. Years 31+: collected.
+    const reinvested = Y <= reinvestYears ? yrTotalTax : 0;
+    const collected = Y > reinvestYears ? yrTotalTax : 0;
 
-    if (Y % 2 === 0 || Y === 50) {
+    cumReinvested += reinvested;
+    cumCollected += collected;
+
+    if (Y % 2 === 0 || Y === 50 || Y === 30 || Y === 31) {
       points.push({
         year: Y,
-        matchCost: Math.round(yrMatch / 1e9),
-        revenue: Math.round(yrRev / 1e9),
-        deathTax: Math.round(yrDT / 1e9),
-        cgt: Math.round(yrCGT / 1e9),
-        divTax: Math.round(yrDiv / 1e9),
+        reinvested: Math.round(reinvested / 1e9),
+        collected: Math.round(collected / 1e9),
+        totalTaxGenerated: Math.round(yrTotalTax / 1e9),
       });
     }
 
     if (Y === 50) {
-      yr50Match = Math.round(yrMatch / 1e9);
-      yr50Rev = Math.round(yrRev / 1e9);
+      yr50Tax = Math.round(yrTotalTax / 1e9);
       yr50DT = Math.round(yrDT / 1e9);
       yr50CGT = Math.round(yrCGT / 1e9);
       yr50Div = Math.round(yrDiv / 1e9);
@@ -139,13 +144,12 @@ const fiscal = (() => {
 
   return {
     data: points,
-    yr50Match,
-    yr50Rev,
+    cumReinvested: Math.round(cumReinvested / 1e9),
+    cumCollected: Math.round(cumCollected / 1e9),
+    yr50Tax,
     yr50DT,
     yr50CGT,
     yr50Div,
-    breakeven,
-    ratio: (yr50Rev / yr50Match).toFixed(1),
   };
 })();
 
@@ -180,16 +184,16 @@ export default function FiscalChart() {
       transition={{ duration: 0.6 }}
     >
       <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-muted mb-2 text-center">
-        Government Match Cost vs Tax Revenue
+        Government Reinvestment &amp; Collection
       </h3>
       <p className="font-sans text-[11px] text-muted text-center mb-6">
-        Death tax (30%) &middot; Capital gains tax (18%) &middot; Dividend tax
-        (12%) &middot; vs 3% match cost
+        Years 1&ndash;30: all tax revenue reinvested into citizen fund &middot;
+        Year 31+: government collects
       </p>
       <div className="h-[350px] w-full">
         {isVisible && (
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart
+            <ComposedChart
               data={fiscal.data}
               margin={{ top: 10, right: 10, left: 10, bottom: 10 }}
             >
@@ -226,9 +230,11 @@ export default function FiscalChart() {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 formatter={(value: any, name: any) => [
                   formatValue(Number(value)),
-                  name === "matchCost"
-                    ? "Match Cost"
-                    : "Tax Revenue",
+                  name === "reinvested"
+                    ? "Reinvested into Fund"
+                    : name === "collected"
+                    ? "Collected by Government"
+                    : "Total Tax Generated",
                 ]}
                 labelFormatter={(label) => `Year ${label}`}
                 contentStyle={{
@@ -245,49 +251,63 @@ export default function FiscalChart() {
                   fontSize: 12,
                 }}
                 formatter={(value) =>
-                  value === "matchCost"
-                    ? "Government Match Cost"
-                    : "Tax Revenue (Death Tax + CGT + Dividends)"
+                  value === "reinvested"
+                    ? "Gov Reinvestment (Yrs 1\u201330)"
+                    : value === "collected"
+                    ? "Gov Revenue Collected (Yr 31+)"
+                    : "Total Tax Generated"
                 }
               />
-              {fiscal.breakeven > 0 && (
-                <ReferenceLine
-                  x={fiscal.breakeven % 2 === 0 ? fiscal.breakeven : fiscal.breakeven - 1}
-                  stroke="#10B981"
-                  strokeDasharray="4 4"
-                  label={{
-                    value: `Breakeven (Yr ${fiscal.breakeven})`,
-                    position: "top",
-                    style: {
-                      fontFamily: "Inter, system-ui, sans-serif",
-                      fontSize: 11,
-                      fill: "#10B981",
-                    },
-                  }}
-                />
-              )}
-              <Line
-                type="monotone"
-                dataKey="matchCost"
-                stroke="#9CA3AF"
-                strokeWidth={2}
-                dot={false}
-                activeDot={{ r: 4, fill: "#9CA3AF" }}
-                animationDuration={1500}
-                animationEasing="ease-out"
+              <ReferenceLine
+                x={30}
+                stroke="#E8A020"
+                strokeDasharray="4 4"
+                label={{
+                  value: "Reinvestment ends \u2192 Collection begins",
+                  position: "top",
+                  style: {
+                    fontFamily: "Inter, system-ui, sans-serif",
+                    fontSize: 10,
+                    fill: "#E8A020",
+                  },
+                }}
               />
+              <ReferenceLine
+                x={10}
+                stroke="#9CA3AF"
+                strokeDasharray="4 4"
+                label={{
+                  value: "10yr lock ends",
+                  position: "top",
+                  style: {
+                    fontFamily: "Inter, system-ui, sans-serif",
+                    fontSize: 10,
+                    fill: "#9CA3AF",
+                  },
+                }}
+              />
+              {/* Reinvested area (amber) — the government's effective contribution */}
+              <Area
+                type="monotone"
+                dataKey="reinvested"
+                stroke="#E8A020"
+                fill="#E8A020"
+                fillOpacity={0.15}
+                strokeWidth={2}
+                animationDuration={1500}
+              />
+              {/* Collected line (green) — what the government takes home */}
               <Line
                 type="monotone"
-                dataKey="revenue"
+                dataKey="collected"
                 stroke="#15803D"
                 strokeWidth={2.5}
                 dot={false}
                 activeDot={{ r: 5, fill: "#15803D" }}
                 animationDuration={1500}
-                animationEasing="ease-out"
                 animationBegin={300}
               />
-            </LineChart>
+            </ComposedChart>
           </ResponsiveContainer>
         )}
       </div>
@@ -295,9 +315,9 @@ export default function FiscalChart() {
       {/* Revenue breakdown at Year 50 */}
       <div className="mt-8 mb-4">
         <h4 className="font-sans text-[11px] font-semibold uppercase tracking-wider text-muted text-center mb-4">
-          Annual Revenue Breakdown at Year 50
+          Annual Revenue at Year 50 (Government Collects)
         </h4>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           <motion.div
             className="text-center p-4 bg-pull-bg rounded-lg border border-green-200"
             initial={{ opacity: 0, y: 10 }}
@@ -340,38 +360,24 @@ export default function FiscalChart() {
               Dividend Tax
             </p>
           </motion.div>
-          <motion.div
-            className="text-center p-4 rounded-lg"
-            style={{ backgroundColor: "#F3F4F6" }}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <p className="font-sans text-xl md:text-2xl font-bold text-gray-500">
-              {formatValue(fiscal.yr50Match)}
-            </p>
-            <p className="font-sans text-[10px] text-muted mt-1">
-              Match Cost
-            </p>
-          </motion.div>
         </div>
       </div>
 
       {/* Key fiscal stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
         <motion.div
-          className="text-center p-5 bg-pull-bg rounded-lg border border-green-200"
+          className="text-center p-5 rounded-lg border"
+          style={{ backgroundColor: "#FEF9EE", borderColor: "#F3D89A" }}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <p className="font-sans text-2xl md:text-3xl font-bold text-primary">
-            {formatValue(fiscal.yr50Rev)}
+          <p className="font-sans text-2xl md:text-3xl font-bold" style={{ color: "#B8860B" }}>
+            {formatValue(fiscal.cumReinvested)}
           </p>
           <p className="font-sans text-[11px] text-muted mt-1">
-            Total annual tax revenue (Year 50)
+            Total reinvested by government (Yrs 1&ndash;30)
           </p>
         </motion.div>
         <motion.div
@@ -382,10 +388,10 @@ export default function FiscalChart() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="font-sans text-2xl md:text-3xl font-bold text-primary">
-            {fiscal.ratio}x
+            {formatValue(fiscal.yr50Tax)}
           </p>
           <p className="font-sans text-[11px] text-muted mt-1">
-            Revenue-to-cost ratio (Year 50)
+            Annual tax revenue at Year 50
           </p>
         </motion.div>
         <motion.div
@@ -396,10 +402,10 @@ export default function FiscalChart() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="font-sans text-2xl md:text-3xl font-bold text-green-700">
-            Year {fiscal.breakeven}
+            Year 31
           </p>
           <p className="font-sans text-[11px] text-muted mt-1">
-            Annual revenue exceeds match cost
+            Government begins collecting
           </p>
         </motion.div>
       </div>
