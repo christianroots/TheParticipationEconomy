@@ -521,12 +521,33 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="my-8 p-6 bg-pull-bg rounded-lg border border-green-200">
+            <p className="font-sans text-sm font-semibold text-primary uppercase tracking-wider mb-2">
+              The 17.5-Year Government Lock
+            </p>
+            <p className="font-serif text-[16px] leading-[1.7] text-text">
+              When the government starts collecting from year 31, it
+              doesn&rsquo;t get to spend the money immediately. Every penny
+              it collects is locked for a minimum of 17.5 years at a time.
+              This is the same principle as the citizen lock &mdash; applied
+              to the state. The Treasury gets its share, but only after it
+              has compounded inside the fund for nearly two decades first.
+              No political cycle can raid it. No chancellor can spend it on
+              a pre-election giveaway. The money has to wait, the same way
+              citizens have to wait, and for the same reason: compounding
+              rewards patience. By the time each slice of government money
+              becomes spendable, it&rsquo;s grown into something several
+              times larger than the amount originally collected.
+            </p>
+          </div>
+
           <PullQuote>
             The government&rsquo;s contribution isn&rsquo;t cash. It&rsquo;s
-            patience. Fifty years of disciplined reinvestment, compounding
-            inside the fund, distributed directly to citizens based on what
-            they put in. That&rsquo;s not doing nothing. That&rsquo;s the
-            most disciplined investment any Treasury has ever made.
+            patience. Fifty years of disciplined reinvestment, a 17.5-year
+            lock on anything the Treasury does collect, and every pound of
+            it distributed directly to citizens based on what they put in.
+            That&rsquo;s not doing nothing. That&rsquo;s the most disciplined
+            investment any Treasury has ever made.
           </PullQuote>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
@@ -562,19 +583,20 @@ export default function Home() {
             </p>
             <p>
               The government gets paid handsomely. It just had the discipline
-              to wait. And that discipline &mdash; that thirty-year
-              reinvestment commitment &mdash; is the single most important
-              feature of the whole system. It&rsquo;s what turns a modest 3%
-              citizen contribution into a &pound;10 trillion national asset base.
-              The government isn&rsquo;t a bystander. It&rsquo;s the
-              accelerant.
+              to wait &mdash; twice. Once for the reinvestment period, and
+              again for the 17.5-year lock on anything it does collect. That
+              double discipline is the single most important feature of the
+              whole system. It&rsquo;s what turns a modest 3% citizen
+              contribution into a &pound;10 trillion national asset base.
+              The government isn&rsquo;t a bystander. It&rsquo;s the accelerant.
             </p>
           </BodyText>
 
           <PullQuote>
             The government doesn&rsquo;t write a cheque. It makes a promise:
-            for thirty years, every penny this system generates goes back in.
-            That promise is worth more than any match programme ever devised.
+            for thirty years, every penny this system generates goes back in
+            &mdash; and when the state finally does collect, even that money
+            is locked for another 17.5 years before it can be spent.
           </PullQuote>
         </AnimatedSection>
 

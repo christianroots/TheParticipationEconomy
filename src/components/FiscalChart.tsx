@@ -62,6 +62,7 @@ const fiscal = (() => {
   let yr50DT = 0;
   let yr50CGT = 0;
   let yr50Div = 0;
+  const yearlyReinvested: Array<{ year: number; amount: number }> = [];
 
   for (let Y = 0; Y <= 50; Y++) {
     let totalCap = 0;
@@ -134,6 +135,9 @@ const fiscal = (() => {
     cumReinvested += reinvested;
     cumCollected += collected;
 
+    // Track each year's reinvestment so we can compound it forward
+    yearlyReinvested.push({ year: Y, amount: reinvested });
+
     if (Y % 2 === 0 || Y === 50 || Y === 30 || Y === 31) {
       points.push({
         year: Y,
@@ -151,6 +155,20 @@ const fiscal = (() => {
     }
   }
 
+  // Compute total equity growth of government's reinvestment from year 8 to year 50.
+  // Each year's reinvested tax compounds at the 8% accumulation return until year 50.
+  // This shows what the government's contribution has GROWN into by year 50.
+  let equityGrowthYr50 = 0;
+  let principalYr8to50 = 0;
+  for (const { year, amount } of yearlyReinvested) {
+    if (year >= 8 && year <= 50 && amount > 0) {
+      principalYr8to50 += amount;
+      const yearsToCompound = 50 - year;
+      equityGrowthYr50 += amount * Math.pow(1 + accReturn, yearsToCompound);
+    }
+  }
+  const equityGrowthOnly = equityGrowthYr50 - principalYr8to50;
+
   return {
     data: points,
     cumReinvested: Math.round(cumReinvested / 1e9),
@@ -159,6 +177,9 @@ const fiscal = (() => {
     yr50DT,
     yr50CGT,
     yr50Div,
+    equityGrowthYr50: Math.round(equityGrowthYr50 / 1e9),
+    principalYr8to50: Math.round(principalYr8to50 / 1e9),
+    equityGrowthOnly: Math.round(equityGrowthOnly / 1e9),
   };
 })();
 
@@ -417,6 +438,35 @@ export default function FiscalChart() {
           </p>
         </motion.div>
       </div>
+
+      {/* Government equity growth showcase */}
+      <motion.div
+        className="mt-6 p-6 md:p-8 rounded-lg border-2 text-center"
+        style={{ backgroundColor: "#F0FDF4", borderColor: "#15803D" }}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+          Total Government Equity Growth &mdash; Year 8 to Year 50
+        </p>
+        <p className="font-sans text-4xl md:text-5xl font-bold text-primary mb-3">
+          {formatValue(fiscal.equityGrowthYr50)}
+        </p>
+        <p className="font-serif text-sm md:text-base text-text leading-relaxed max-w-2xl mx-auto">
+          From year 8 &mdash; the first year meaningful tax revenue is
+          generated &mdash; to year 50, the government&rsquo;s reinvested tax
+          compounds into{" "}
+          <strong>{formatValue(fiscal.equityGrowthYr50)}</strong> of citizen
+          equity.{" "}
+          <span className="text-muted">
+            That&rsquo;s {formatValue(fiscal.principalYr8to50)} in reinvested
+            tax plus {formatValue(fiscal.equityGrowthOnly)} in compound growth.
+            Every pound of it distributed to citizens by contribution share.
+          </span>
+        </p>
+      </motion.div>
     </motion.div>
   );
 }
